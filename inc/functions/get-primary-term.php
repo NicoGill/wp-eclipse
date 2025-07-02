@@ -1,27 +1,31 @@
 <?php
 /**
- * Function : Get primary category for post.
+ * Function : Get primary term for given post ID. Default to category.
  *
  * @package wp_eclipse
  */
 
 namespace NicoGill\wp_eclipse;
 
-if ( ! function_exists( 'get_primary_category' ) ) {
+use WP_Term;
+
+if ( ! function_exists( 'get_primary_term' ) ) {
 	/**
-	 * Get primary category for post.
+	 * Get primary term for post.
 	 *
-	 * @since  2.2.0
-	 * @param  integer $post_id   Which post to get the primary category for, if empty current post is used.
-	 * @param  string  $taxonomy  From which taxonomy to get the term from, defaults to category.
-	 * @return mixed              Boolean false of no category, otherwise WP_Term object.
+	 * @param integer $post_id Which post to get the primary term for, if empty current post is used.
+	 * @param string $taxonomy From which taxonomy to get the term from, defaults to term.
+	 *
+	 * @return false|WP_Term Boolean false of no term, otherwise WP_Term object.
+	 *
 	 */
-	function get_primary_category( $post_id = 0, $taxonomy = 'category' ) {
+	function get_primary_term(int $post_id = 0, string $taxonomy = 'category' ) : false|WP_Term
+	{
 		$post_id = ! empty( $post_id ) ? $post_id : get_the_id();
 
 		$primary_meta_keys = [
-			'_yoast_wpseo_primary_' . $taxonomy, // Primary category from Yoast setting
-			'_primary_term_' . $taxonomy, // Autodescription primary category setting
+			'_yoast_wpseo_primary_' . $taxonomy, // Primary term from Yoast setting
+			'_primary_term_' . $taxonomy, // Autodescription primary term setting
 		];
 
 		$cat_id = null;
@@ -42,12 +46,13 @@ if ( ! function_exists( 'get_primary_category' ) ) {
 			return $term;
 		}
 
-		// No primary category, get all post categories and return first one
+		// No primary term, get all post terms and return first one
 		$cats = wp_get_post_terms( $post_id, $taxonomy );
+
 		if ( ! empty( $cats ) && ! is_wp_error( $cats ) ) {
 			return $cats[0];
 		}
 
 		return false;
-	} // end get_primary_category
+	} // end get_primary_term
 } // end if

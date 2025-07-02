@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Site main footer
+   Import partials for functions in template-tags folder (print functions).
    ========================================================================== */
 
-@use '@scss/abstracts/index' as *;
+@forward 'edit-link';

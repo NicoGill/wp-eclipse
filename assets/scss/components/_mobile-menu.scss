@@ -47,7 +47,7 @@
 		top: 1.25rem;
 	}
 
-	@include respond( $breakpoint-mobile-menu ) {
+	@include respond-max( $breakpoint-mobile-menu ) {
 		.is-active-menu & {
 			display: block;
 			.mobile-menu__nav {

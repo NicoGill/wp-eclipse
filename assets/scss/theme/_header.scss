@@ -1,0 +1,16 @@
+/* ==========================================================================
+   Site main header
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.site-header {
+	padding-top: var(--padding-container-horizontal);
+
+	&__inner {
+		@include wrap;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+}

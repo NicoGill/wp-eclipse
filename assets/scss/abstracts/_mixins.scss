@@ -132,12 +132,6 @@
 	margin-left: auto;
 	margin-right: auto;
 	width: 100%;
-
-	@include breakpoint( $breakpoint-l ) {
-		max-width: calc(
-			var( --width-content ) + 2 * var( --padding-container-horizontal )
-		);
-	}
 }
 
 /* Tools

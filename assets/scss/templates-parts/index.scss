@@ -1,6 +1,6 @@
 /* ==========================================================================
-   Import partials for functions in template-tags folder (print functions).
+   Styles for WordPress template parts theme folder.
    ========================================================================== */
 
-@forward 'menu-toggle';
-@forward 'edit-link';
+@forward 'post/teaser';
+@forward 'global/menu-toggle';
