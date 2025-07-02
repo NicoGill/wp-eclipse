@@ -37,6 +37,12 @@ function setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
+	add_theme_support( 'custom-logo', array(
+		'height'      => 100,
+		'width'       => 250,
+		'flex-height' => true,
+	) );
+
 	/**
 	 * Enable support for Post Thumbnails on posts and pages.
 	 *
@@ -51,7 +57,6 @@ function setup() {
 	register_nav_menus(
 		array(
 			'primary'  => esc_html__( 'Menu principal', 'wp_eclipse' ),
-			'contacts' => esc_html__( 'Menu des contacts', 'wp_eclipse' ),
 			'socials'  => esc_html__( 'Menu des réseaux sociaux', 'wp_eclipse' ),
 			'footer-1' => esc_html__( 'Menu du pied de page colonne 1', 'wp_eclipse' ),
 			// etc.

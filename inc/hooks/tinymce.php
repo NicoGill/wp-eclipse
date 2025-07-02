@@ -42,41 +42,12 @@ function tinymce_custom_formats( $init ) {
 
 	$style_formats = array(
 		array(
-			'title'    => 'Titre',
+			'title'    => esc_html__('Titre', 'wp_eclipse'),
 			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
 			'classes'  => 'text-title',
 			'wrapper'  => false,
 		),
-		array(
-			'title'    => 'Sur-titre',
-			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
-			'classes'  => 'text-surtitle',
-			'wrapper'  => false,
-		),
-		array(
-			'title'    => 'Corps de texte',
-			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
-			'classes'  => 'text-body',
-			'wrapper'  => false,
-		),
-		array(
-			'inline'  => 'span',
-			'title'   => 'Noir et souligné',
-			'classes' => 'text-underlined-black',
-			'wrapper' => true,
-		),
-		array(
-			'title'    => 'Sans marge supérieure',
-			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
-			'classes'  => 'mt-0',
-			'wrapper'  => false,
-		),
-		array(
-			'title'    => 'Sans marge inférieure',
-			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
-			'classes'  => 'mb-0',
-			'wrapper'  => false,
-		),
+		// ...
 	);
 
 	// Insert the array, JSON ENCODED, into 'style_formats'

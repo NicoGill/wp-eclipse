@@ -9,6 +9,10 @@ namespace NicoGill\wp_eclipse;
 
 /**
  * Custom PHP mailer on .test domain
+ *
+ * @param $phpmailer
+ *
+ * @return void
  */
 function phpmailer_init_dev( $phpmailer ) {
 
@@ -21,7 +25,7 @@ function phpmailer_init_dev( $phpmailer ) {
 	}
 
 	$phpmailer->isSMTP();
-	$phpmailer->Host = 'mailpit'; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+	$phpmailer->Host = 'mailpit'; // phpcs :ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 	$phpmailer->Port = 1025; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 }
 add_action( 'phpmailer_init', __NAMESPACE__ . '\phpmailer_init_dev' );

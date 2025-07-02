@@ -1,8 +1,14 @@
 
 # WordPress Eclipse theme
 
-WordPress development starter theme by Nicolas Gillium, freelance web developer based in Nancy since 2014.
+WordPress development starter theme by (and mostly for) Nicolas Gillium, freelance web developer based in Nancy since 2014.
 
+Largely inspired by themes such as [wd_s](https://github.com/WebDevStudios/wd_s), [_s](https://github.com/Automattic/_s) 
+and [air-light](https://github.com/digitoimistodude/air-light).
+
+🎯 The aim is to provide a simple but effective development base for managing frontend dependencies.
+
+⚠️ **Under development and improvement.** ⚠️
 
 ## Author
 
@@ -26,9 +32,5 @@ composer install
 
 Command | Action
 :- | :-
-`npm run watch` | Builds assets and starts Live Reload and Browsersync servers
-`npm run start` | Builds assets and starts Live Reload server
+`npm run start` | Builds assets and starts Live Reload and Browsersync servers
 `npm run build` | Builds production-ready assets for a deployment
-`npm run lint` | Check all CSS, JS, MD, and PHP files for errors
-`npm run format` | Fix all CSS, JS, MD, and PHP formatting errors automatically
-`npm run report` | Gives detailed information on coding standards violations in PHP code

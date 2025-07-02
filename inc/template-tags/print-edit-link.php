@@ -9,7 +9,17 @@
 
 namespace NicoGill\wp_eclipse;
 
-function print_edit_link() {
+/**
+ * Displays an edit link for the current post, taxonomy term, or homepage if applicable.
+ *
+ * The function determines the context based on the conditional tags.
+ * It creates an edit link for singular posts, taxonomy terms, or the page assigned as the home/blog page.
+ * If no applicable edit link is found, the function exits without rendering anything.
+ *
+ * @return void This function outputs an edit link or does nothing if no edit link is available.
+ */
+function print_edit_link(): void
+{
 
 	global $post;
 

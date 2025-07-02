@@ -14,7 +14,7 @@ namespace NicoGill\wp_eclipse;
  *
  * @param array $new_classes Classes for the <main> element.
  *
- * @return array main classes.
+ * @return string main classes.
  */
 function main_classes( $new_classes ) {
 

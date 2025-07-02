@@ -16,19 +16,15 @@ const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
  * @property {string} admin      Path to the SCSS file specifically for admin styles.
  */
 const entries = {
-	main: path.resolve( __dirname, 'src/js/main.js' ),
-	theme: path.resolve( __dirname, 'src/scss/main.scss' ),
-	tinymce: path.resolve( __dirname, 'src/scss/editor-classic.scss' ),
+	main: path.resolve( __dirname, 'assets/js/main.js' ),
+	theme: path.resolve( __dirname, 'assets/scss/main.scss' ),
+	tinymce: path.resolve( __dirname, 'assets/scss/editor-classic.scss' ),
 };
 
-const fontFiles = glob.sync( './src/fonts/**/*.{woff,woff2,ttf,otf,eot}' );
+const fontFiles = glob.sync( './assets/fonts/**/*.{woff,woff2,ttf,otf,eot}' );
 const imageFiles = glob.sync(
-	'./src/images/**/*.{jpg,jpeg,png,gif,svg,webp,avif}'
+	'./assets/images/**/*.{jpg,jpeg,png,gif,svg,webp,avif}'
 );
-const svgIcons = glob
-	.sync( './src/icons/**/*.svg' )
-	.map( ( file ) => file.replace( /\\/g, '/' ) );
-
 const plugins = [ ...defaultConfig.plugins ];
 
 // Copie fonts/images si contenus
@@ -37,49 +33,46 @@ if ( fontFiles.length || imageFiles.length ) {
 
 	if ( fontFiles.length ) {
 		patterns.push( {
-			from: path.resolve( __dirname, 'src/fonts' ),
+			from: path.resolve( __dirname, 'assets/fonts' ),
 			to: path.resolve( __dirname, 'build/fonts' ),
 		} );
 	}
 
 	if ( imageFiles.length ) {
 		patterns.push( {
-			from: path.resolve( __dirname, 'src/images' ),
+			from: path.resolve( __dirname, 'assets/images' ),
 			to: path.resolve( __dirname, 'build/images' ),
 		} );
 	}
 
+	patterns.push( {
+		from: '*.svg',
+		to: 'images/icons/[name][ext]',
+		context: path.resolve(
+			process.cwd(),
+			'assets/icons'
+		),
+		noErrorOnMissing: true,
+	} );
+
 	plugins.push( new CopyWebpackPlugin( { patterns } ) );
 }
 
-// Optimisation images si fichiers présents
-if ( imageFiles.length ) {
-	plugins.push(
-		new ImageminPlugin( {
-			test: /\.(jpe?g|png|gif|svg)$/i,
-			pngquant: { quality: '65-80' },
-			jpegtran: { progressive: true },
-		} )
-	);
-}
-
 // Sprite SVG si icônes détectés
-if ( svgIcons.length > 0 ) {
-	plugins.push(
-		new SVGSpritemapPlugin( svgIcons, {
-			output: {
-				filename: 'images/sprite.svg',
-				svgo: true,
-			},
-			sprite: {
-				prefix: false,
-				generate: {
-					title: false,
-				},
-			},
-		} )
-	);
-}
+/**
+ *
+ */
+plugins.push(
+	new SVGSpritemapPlugin( 'assets/images/icons/*.svg', {
+		output: {
+			filename: 'images/icons/sprite.svg',
+			svgo: true
+		},
+		sprite: {
+			prefix: false,
+		},
+	} )
+);
 
 // BrowserSync pour Laragon HTTPS
 plugins.push(
@@ -100,6 +93,18 @@ plugins.push(
 	)
 );
 
+
+// Optimisation images si fichiers présents
+if ( imageFiles.length ) {
+	plugins.push(
+		new ImageminPlugin({
+			test: /\.(jpe?g|png|gif)$/i,
+			pngquant: {quality: '65-80'},
+			jpegtran: {progressive: true},
+		})
+	);
+}
+
 module.exports = {
 	...defaultConfig,
 	entry: entries,
@@ -109,8 +114,8 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-			'@scss': path.resolve( __dirname, 'src/scss' ),
-			'@js': path.resolve( __dirname, 'src/js' ),
+			'@scss': path.resolve( __dirname, 'assets/scss' ),
+			'@js': path.resolve( __dirname, 'assets/js' ),
 		},
 	},
 	plugins,

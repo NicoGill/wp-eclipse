@@ -49,7 +49,7 @@
 		 Multiple valid prefixes can be provided as a comma-delimited list. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
-			<property name="prefixes" type="array" value="NicoGill\wp_liyu,wp_liyu,liyu" />
+			<property name="prefixes" type="array" value="NicoGill\wp_eclipse,wp_eclipse,eclipse" />
 		</properties>
 	</rule>
 
@@ -57,7 +57,7 @@
 		 Multiple valid text domains can be provided as a comma-delimited list. -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
-			<property name="text_domain" type="array" value="wp_liyu"/>
+			<property name="text_domain" type="array" value="wp_eclipse"/>
 		</properties>
 	</rule>
 

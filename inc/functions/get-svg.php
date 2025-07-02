@@ -36,6 +36,7 @@ function get_svg( $args = [] ) {
 		'stroke-width' => '',
 		'height'       => '',
 		'width'        => '',
+		'class'      => [],
 	];
 
 	// Parse args.
@@ -64,6 +65,12 @@ function get_svg( $args = [] ) {
 	$height       = ( $args['height'] ) ? ' height="' . $args['height'] . '"' : '';
 	$width        = ( $args['width'] ) ? ' width="' . $args['width'] . '"' : '';
 
+	// Combine base and additional classes.
+	$base_classes      = [ 'icon', $args['icon'] ];
+	$additional_classes = is_array( $args['class'] ) ? $args['class'] : [];
+	$all_classes       = array_merge( $base_classes, $additional_classes );
+	$classes_string    = implode( ' ', array_map( 'esc_attr', $all_classes ) );
+
 	// Start a buffer...
 	ob_start();
 	?>
@@ -75,8 +82,8 @@ function get_svg( $args = [] ) {
 		echo get_post_content( $color ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 		echo get_post_content( $stroke_width ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 	?>
-		class="icon <?php echo esc_attr( $args['icon'] ); ?>"
-	<?php
+		class="<?php echo $classes_string; ?>"
+		<?php
 		echo get_post_content( $aria_hidden ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 		echo get_post_content( $aria_labelledby ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 	?>

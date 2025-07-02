@@ -73,7 +73,8 @@ add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\filter_wp_ge
  *
  * @return array Mime types.
  */
-function custom_mime_types( $mimes ) {
+function custom_mime_types( $mimes ): array
+{
 	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 
@@ -90,7 +91,8 @@ add_filter( 'upload_mimes', __NAMESPACE__ . '\custom_mime_types' );
  *
  * @return string The updated $block_title.
  */
-function remove_archive_title_prefix( $block_title ) {
+function remove_archive_title_prefix( $block_title ): string
+{
 	// Get the single category title with no prefix.
 	$single_cat_title = single_term_title( '', false );
 
@@ -110,7 +112,8 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 /**
  * Disable WordPress search functionality
  */
-function remove_s_query( $query, $error = true ) {
+function remove_s_query( $query, $error = true ): void
+{
 
 	if ( is_search() && ! is_admin() ) {
 		$query->is_search       = false;
@@ -152,94 +155,3 @@ function fix_svg_size_attributes( $out, $id ) {
 	return array( $image_url, null, null, false );
 }
 add_filter( 'image_downsize', __NAMESPACE__ . '\fix_svg_size_attributes', 10, 2 );
-
-/**
- * Initialize machine featured repeater with values. If no values are set, set default values.
- */
-function initialize_machine_features_repeater_field( $field ) {
-
-	if ( empty( $field['value'] ) ) {
-
-		$field['value'] = array(
-			array(
-				'field_66ffafc7c8908' => 'Modèle',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Tête d\'impression',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Nombre de tête d\'impression',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Taille de gouttes',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Couleurs',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Encres',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Séchage',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Largeur d\'impression',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Épaisseur maximale du support',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Résolution max.',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Vitesse d\'impression maximale',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Logiciel RIP',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Entrainement du chariot',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Dimensions',
-				'field_66ffb04dc8909' => '',
-			),
-			array(
-				'field_66ffafc7c8908' => 'Besoin en électricité ',
-				'field_66ffb04dc8909' => '',
-			),
-		);
-	}
-
-	return $field;
-}
-add_filter( 'acf/prepare_field/key=field_66ffafc7c8907', __NAMESPACE__ . '\initialize_machine_features_repeater_field', 10, 1 );
-
-/**
- * Filter machine_categorie and category term link to respectly archive link with get parameter slug cat.
- */
-function filter_machine_categorie_term_link( $termlink, $term, $taxonomy ) {
-	if ( 'machine_categorie' === $taxonomy ) {
-		$termlink = add_query_arg( 'categorie', $term->slug, get_post_type_archive_link( 'machine' ) );
-	}
-
-	if ( 'category' === $taxonomy ) {
-		$termlink = add_query_arg( 'categorie', $term->slug, get_post_type_archive_link( 'post' ) );
-	}
-
-	return $termlink;
-}
-add_filter( 'term_link', __NAMESPACE__ . '\filter_machine_categorie_term_link', 10, 3 );

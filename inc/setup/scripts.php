@@ -25,8 +25,8 @@ function scripts() {
 	}
 
 	// Register styles & scripts.
-	wp_enqueue_style( 'wp_liyu-styles', get_stylesheet_directory_uri() . '/build/theme.css', array(), $asset_file['version'] );
-	wp_enqueue_script( 'wp_liyu-scripts', get_stylesheet_directory_uri() . '/build/main.js', $asset_file['dependencies'], $asset_file['version'], true );
+	wp_enqueue_style( 'wp_eclipse-styles', get_stylesheet_directory_uri() . '/build/theme.css', array(), $asset_file['version'] );
+	wp_enqueue_script( 'wp_eclipse-scripts', get_stylesheet_directory_uri() . '/build/main.js', $asset_file['dependencies'], $asset_file['version'], true );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
 
