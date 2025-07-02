@@ -1,0 +1,20 @@
+/* ==========================================================================
+ # Font face declarations
+========================================================================== */
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono';
+	font-style: normal;
+	font-weight: 400;
+	src: url( '../fonts/spacemono-400.woff2' ) format( 'woff2' );
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Space Mono';
+	font-style: italic;
+	font-weight: 400;
+	src: url( '../fonts/spacemono-400i.woff2' ) format( 'woff2' );
+}
+

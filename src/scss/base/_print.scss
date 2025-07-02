@@ -1,0 +1,12 @@
+// stylelint-disable a11y/no-display-none
+
+/* ==========================================================================
+   Print styles
+   ========================================================================== */
+@media print {
+	.site-header,
+	.site-footer,
+	.side-nav {
+		display: none;
+	}
+}

@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Generic form styles
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+fieldset {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	min-width: 0;
+}
+
+legend {
+	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 1rem;
+	border: 0;
+	text-transform: none;
+}
+
+label {
+	max-width: 100%;
+}
+
+select,
+textarea,
+input {
+	background: #f3f3f3;
+	border: 1px solid #f3f3f3;
+	color: var( --color-black );
+	font-family: var( --font-default );
+	font-size: 1rem;
+	max-width: 100%;
+	padding: 0.75rem 1.25rem;
+	width: 100%;
+
+	&:focus {
+		border-color: var( --color-black );
+		outline: none;
+	}
+
+	&::placeholder {
+		color: var( --color-black );
+		opacity: 1;
+	}
+
+	&.wpcf7-not-valid {
+		border-color: var( --color-error );
+	}
+}
+
+input,
+select {
+	border-radius: 5rem;
+}
+
+input[type='submit'] {
+	cursor: pointer;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+	margin: 0.25rem 0 0;
+	line-height: normal;
+}
+
+select {
+	appearance: none;
+	background: #f3f3f3 url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 6" fill="none" stroke="black" stroke-width="1.5"><path d="M1 1l4 4 4-4"/></svg>') no-repeat right 1rem center;
+	background-size: 0.75rem auto;
+	padding-right: 2.5rem;
+}
+
+textarea {
+	border-radius: 1.5rem;
+	height: 15rem;
+	resize: none;
+}
+
+/* Misc
+========================================================================== */
+
+
+/* Contact group field styles
+========================================================================== */
+
+.form-row {
+
+}
+
+.form-group {
+
+}

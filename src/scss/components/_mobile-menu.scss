@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Menu mobile styles
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.mobile-menu {
+	display: none;
+	position: fixed;
+	z-index: 9000;
+	&__nav {
+		background: var( --color-white );
+		display: none;
+		padding: 3rem 3rem 5rem;
+		position: fixed;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		z-index: 8998;
+		width: 100%;
+		overflow-y: auto;
+
+		@include respond( $breakpoint-s ) {
+			max-width: 25rem;
+		}
+
+		&__inner {
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	&__overlay {
+		position: fixed;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 8997;
+		background: rgba( 0, 0, 0, 0.3 ); // @todo variable
+	}
+
+	.menu-toggle {
+		color: var( --color-primary );
+		position: absolute;
+		right: 1.25rem;
+		top: 1.25rem;
+	}
+
+	@include respond( $breakpoint-mobile-menu ) {
+		.is-active-menu & {
+			display: block;
+			.mobile-menu__nav {
+				display: block;
+				animation: mobilemenu-nav-in 0.25s;
+			}
+			.mobile-menu__overlay {
+				animation: mobilemenu-overlay-in 0.25s;
+			}
+		}
+		.is-closing-menu & {
+			.mobile-menu__nav {
+				animation: mobilemenu-nav-out 0.25s;
+			}
+			.mobile-menu__overlay {
+				animation: mobilemenu-overlay-out 0.25s;
+			}
+		}
+	}
+}
+
+@keyframes mobilemenu-overlay-in {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+@keyframes mobilemenu-overlay-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes mobilemenu-nav-in {
+	from {
+		transform: translateX( 100% );
+	}
+	to {
+		transform: translateX( 0 );
+	}
+}
+@keyframes mobilemenu-nav-out {
+	from {
+		transform: translateX( 0 );
+	}
+	to {
+		transform: translateX( 100% );
+	}
+}

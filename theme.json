@@ -1,0 +1,22 @@
+{
+	"version": 2,
+	"settings": {
+		"color": {
+			"custom": false,
+			"palette": []
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "%" ]
+		}
+	},
+	"styles": {
+		"elements": {
+			"button": {
+				"color": {
+					"text": "#ffffff",
+					"background": "#000000"
+				}
+			}
+		}
+	}
+}

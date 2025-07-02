@@ -1,0 +1,37 @@
+/* ==========================================================================
+   Edit link admin button inc\template-tags\print-edit-link.php styles
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.edit-link {
+	bottom: 0;
+	margin: 0;
+	overflow: hidden;
+	position: fixed;
+	right: 0;
+	z-index: 999;
+
+	a {
+		background-color: var( --color-black );
+		border: 2px solid var( --color-black );
+		border-bottom: 0;
+		clear: both;
+		color: var( --color-white );
+		display: block;
+		font-size: 1rem;
+		margin: 0;
+		padding: 0 0.75rem;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+
+		@include transition;
+	}
+
+	&:focus,
+	a:hover {
+		background-color: var( --color-white );
+		color: var( --color-black );
+	}
+}

@@ -1,0 +1,41 @@
+/* ==========================================================================
+   Contact Form 7 styles override
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.wpcf7 {
+	form.contact-form {
+		&.invalid,
+		&.unaccepted,
+		&.payment-required {
+			.wpcf7-response-output {
+				background-color: var( --color-warning );
+			}
+		}
+		.wpcf7-response-output {
+			background-color: var( --color-success );
+			border: 0;
+			border-radius: 0.625rem;
+			color: var( --color-white );
+			font-size: 0.813rem;
+			margin: 2rem 0;
+			padding: 0.75rem 1.25rem;
+			text-align: center;
+
+			@include respond( $breakpoint-m ) {
+				font-size: 1rem;
+			}
+		}
+
+		.wpcf7-not-valid-tip {
+			color: var( --color-error );
+			font-size: var( --size-14 );
+			margin-top: 0.125rem;
+		}
+
+		.wpcf7-spinner {
+			margin: 0;
+		}
+	}
+}

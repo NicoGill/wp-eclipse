@@ -1,0 +1,91 @@
+/* ==========================================================================
+ # Variables
+========================================================================== */
+
+:root {
+	// colors
+	--color-black: #000;
+	--color-mostly-white: #fcfcfc;
+	--color-very-light-gray: #d9d9d9;
+	--color-dark-gray: #868686;
+	--color-white: #fff;
+
+	// theme colors
+	--color-primary: #1c1c1e; // #1F1F23;
+	--color-title: var( --color-primary );
+	--color-text: var( --color-dark-gray );
+	--color-error: #dc3232;
+	--color-warning: #d35400;
+	--color-success: #218c74;
+
+	// font-family
+	--font-default: 'Space Mono', 'Helvetica Neue', helvetica, arial, 'Lucida Grande',
+		sans-serif;
+
+	// font-weight
+	--font-weight-thin: 100;
+	--font-weight-light: 300;
+	--font-weight-regular: 400;
+	--font-weight-medium: 500;
+	--font-weight-bold: 700;
+	--font-weight-extrabold: 800;
+	--font-weight-heavy: 900;
+
+	// font-size,
+	// Minimum Viewport Width (px) -> 890px
+	// Maximum Viewport Width (px) -> 1920px
+	--size-14: 0.875rem;
+	--size-16: 1rem;
+	--size-20: calc(clamp(1.063rem, 0.291vw + 0.9rem, 1.25rem));
+	--size-30: calc(clamp(1.125rem, 1.165vw + 0.477rem, 1.875rem));
+	--size-40: calc(clamp(1.5rem, 1.553vw + 0.636rem, 2.5rem));
+	--size-50: calc(clamp(1.5rem, 2.524vw + 0.096rem, 3.125rem));
+	--size-70: calc(clamp(1.875rem, 3.883vw - 0.285rem, 4.375rem));
+
+	// theme font sizes
+	--font-size-h1: var( --size-70 );
+	--font-size-h2: var( --size-40 );
+	--font-size-h3: var( --size-30 );
+	--font-size-h4: var( --size-20 );
+	--font-size-h5: var( --size-16 );
+	--font-size-h6: 0.875rem;
+	--font-size-paragraph: var( --size-16 );
+
+	// line height
+	--line-height-paragraph: 1.25;
+	--line-height-heading: 1.15;
+
+	// letter spacing
+
+	// width
+	--width-narrow: 100%;
+	--width-content: 100%;
+
+	// spacing
+	--padding-container-horizontal: 1.125rem;
+	--margin-between-paragraphs: 1rem;
+	--block-gap: 1.875rem;
+
+	// Misc
+	--lightbox-z-index: 9009;
+
+	//@include respond( $breakpoint-s ) {
+	//	--padding-container-horizontal: 2.25rem; // OLD 1.5rem
+	//}
+	//
+	//// Font sizes for large screen
+	//@include respond( $breakpoint-l ) {
+	//	//--size-20: 1.25rem;
+	//	//--size-30: 1.875rem;
+	//	//--size-40: 2.5rem;
+	//	//--size-50: 3.125rem;
+	//	//--size-70: 4.375rem;
+	//
+	//	--width-narrow: 70.875rem;
+	//	--width-content: 90%;
+	//}
+	//
+	//@include respond( $breakpoint-ml ) {
+	//	--width-content: 78%;
+	//}
+}

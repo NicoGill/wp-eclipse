@@ -1,0 +1,30 @@
+/* ==========================================================================
+ # Environment variables (SASS)
+========================================================================== */
+
+/* Breakpoints min-width
+----------------------------------------------- */
+$breakpoint-xl: 1600px;
+$breakpoint-ml: 1480px;
+$breakpoint-l: 1280px;
+$breakpoint-m: 890px;
+$breakpoint-s: 560px;
+
+/* Breakpoints max-width (sub-*)
+----------------------------------------------- */
+$breakpoint-sub-xl: 1599px;
+$breakpoint-sub-ml: 1479px;
+$breakpoint-sub-l: 1279px;
+$breakpoint-sub-m: 889px;
+$breakpoint-sub-s: 559px;
+
+/* Context breakpoints
+----------------------------------------------- */
+$breakpoint-desktop-menu: $breakpoint-m;
+$breakpoint-mobile-menu: $breakpoint-sub-m;
+
+/* Widths
+----------------------------------------------- */
+$width-max-article: 812px;
+$width-wide: 1640px;
+$width-full: 100%;

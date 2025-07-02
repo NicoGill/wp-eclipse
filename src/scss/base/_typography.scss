@@ -1,0 +1,107 @@
+// stylelint-disable declaration-property-unit-allowed-list
+
+@use '@scss/abstracts/index' as *;
+
+/* ==========================================================================
+   Typography settings
+   ========================================================================== */
+.is-root-container,
+.acf-block-preview .block,
+body {
+	color: var( --color-text );
+	font-family: var( --font-default );
+	font-size: var( --size-16 );
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 400;
+	line-height: var( --line-height-paragraph );
+	// stylelint-disable-next-line value-keyword-case
+	text-rendering: geometricPrecision;
+}
+
+// Heading defaults
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var( --color-title );
+	margin-bottom: var( --margin-between-paragraphs );
+	margin-top: var( --margin-between-paragraphs );
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: var( --line-height-heading );
+}
+
+// Define heading scales
+// Current: Perfect fourth: https://type-scale.com/
+h1 {
+	font-size: var( --font-size-h1 );
+}
+
+h2 {
+	font-size: var( --font-size-h2 );
+}
+
+h3 {
+	font-size: var( --font-size-h3 );
+}
+
+h4 {
+	font-size: var( --font-size-h4 );
+}
+
+h5 {
+	font-size: var( --font-size-h5 );
+}
+
+h6 {
+	font-size: var( --font-size-h6 );
+}
+
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+	margin-top: 0;
+}
+
+// Bold
+b,
+strong {
+	font-weight: var( --font-weight-bold );
+}
+
+// Italic
+em,
+i {
+	font-style: italic;
+}
+
+// Default paragraphs
+p {
+	font-size: var( --size-16 );
+	margin-bottom: var( --margin-between-paragraphs );
+	margin-top: var( --margin-between-paragraphs );
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+
+ol {
+	list-style: decimal;
+	list-style-position: inside;
+}
+
+a {
+	@include transition;
+}

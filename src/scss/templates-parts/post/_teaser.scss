@@ -1,0 +1,90 @@
+/* ==========================================================================
+   template-parts\post\teaser-home.php - Home last post
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.teaser-post {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	&__aside {
+		&__link {
+			@include link-reset;
+			display: block;
+			line-height: 0;
+
+			&:hover,
+			&:active,
+			&:focus {
+				.teaser-post__thumbnail {
+					img {
+						transform: scale( 1.05 );
+					}
+				}
+			}
+		}
+	}
+
+	&__thumbnail {
+		border-radius: 1.25rem;
+		margin: 0;
+		overflow: hidden;
+		width: 100%;
+
+		img {
+			@include transition;
+			aspect-ratio: 41 / 34;
+		}
+	}
+
+	&__container {
+		flex: 1;
+	}
+
+	&__header {
+		border-bottom: 1px solid var( --color-very-light-gray );
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-bottom: 1rem;
+		padding-bottom: 1rem;
+
+		&__link {
+			@include link-reset;
+
+			&:hover,
+			&:active,
+			&:focus {
+				text-decoration: underline;
+			}
+		}
+
+		&__title {
+			font-size: var( --size-30 );
+			margin: 0;
+		}
+	}
+
+	&__category {
+		@include link-reset;
+		font-weight: var( --font-weight-bold );
+
+		&:hover,
+		&:active,
+		&:focus {
+			text-decoration: underline;
+		}
+	}
+
+	&__excerpt {
+		margin-bottom: 1rem;
+	}
+
+	&__read-more {
+		color: var( --color-black );
+		font-weight: var( --font-weight-bold );
+
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"extends": [
+		"@wordpress/stylelint-config",
+		"@wordpress/stylelint-config/scss",
+		"stylelint-config-standard-scss"
+	],
+	"rules": {
+		"number-max-precision": [
+			2,
+			{
+				"ignoreUnits": [ "em" ],
+				"severity": "warning"
+			}
+		]
+	}
+}

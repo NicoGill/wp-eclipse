@@ -1,0 +1,22 @@
+/* ==========================================================================
+   Toggle menu styles
+   ========================================================================== */
+
+@use '@scss/abstracts/index' as *;
+
+.menu-toggle {
+	color: var( --color-white );
+	cursor: pointer;
+	display: flex;
+
+	@include transition;
+	@include button-reset;
+	@include respond( $breakpoint-desktop-menu ) {
+		display: none;
+	}
+
+	svg {
+		height: 2rem;
+		width: 2rem;
+	}
+}
