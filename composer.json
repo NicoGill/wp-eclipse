@@ -33,6 +33,6 @@
 		"format": "phpcbf --report=summary,source",
 		"lint": "phpcs --report=code",
 		"report": "phpcs --report=info",
-		"pot": "wp i18n make-pot . build/languages/wp_liyu.pot --exclude=node_modules,vendor,build --allow-root"
+		"pot": "wp i18n make-pot . build/languages/wp_eclipse.pot --exclude=node_modules,vendor,build --allow-root"
 	}
 }

@@ -22,36 +22,49 @@ defined('ABSPATH') || exit;
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<?php	wp_head(); ?>
+	<?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
 
 	<?php wp_body_open(); ?>
 
-	<header id="masthead" class="site-header">
-		<div class="container">
-			<div class="header-inner">
-				<a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo">
-					<?php if (has_custom_logo()) {
-						the_custom_logo();
-					} else {
-						bloginfo('name');
-					} ?>
-				</a>
-				<button class="menu-toggle" aria-expanded="false" aria-controls="primary-menu">
-					☰
-				</button>
-				<?php
-				wp_nav_menu([
-					'theme_location' => 'primary',
-					'menu_id'        => 'primary-menu',
-					'container'      => 'nav',
-					'container_class'=> 'primary-nav',
-				]);
-				?>
-			</div>
-		</div>
-	</header>
+	<div id="page" class="site js-page">
 
-	<?php print_edit_link(); ?>
+		<header id="masthead" class="site-header">
+			<div class="site-header__inner">
+
+				<?php
+				$custom_logo_id = get_theme_mod( 'custom_logo' );
+
+				if ( $custom_logo_id ) : ?>
+					<div class="site-header__branding">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header__logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+							<?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
+						</a>
+					</div>
+				<?php endif; ?>
+
+				<?php if ( has_nav_menu( 'primary' ) ) : ?>
+					<nav class="js-navigation primary-navigation site-header__main desktop-menu" data-navigation-type="desktop" aria-label="Menu principal">
+						<?php
+						wp_nav_menu(
+							array(
+								'theme_location' => 'primary',
+								'container'      => '',
+								'menu_class'     => 'header-navigation primary-navigation__items',
+								'link_before'    => '',
+								'link_after'     => '',
+								'fallback_cb'    => '',
+								'depth'          => 2,
+							)
+						);
+						?>
+					</nav>
+				<?php endif; ?>
+
+				<?php get_template_part('template-parts/global/menu-toggle'); ?>
+			</div>
+		</header>
+
+		<?php print_edit_link(); ?>
