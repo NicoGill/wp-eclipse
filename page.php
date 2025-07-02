@@ -9,10 +9,10 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package Eclipse\Theme
+ * @package NicoGill\wp_eclipse
  */
 
-namespace Eclipse\Theme;
+namespace NicoGill\wp_eclipse;
 
 defined('ABSPATH') || exit;
 
