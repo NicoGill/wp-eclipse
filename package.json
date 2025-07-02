@@ -2,7 +2,6 @@
 	"name": "wp-eclipse",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
 	"scripts": {
 		"build": "wp-scripts build",
 		"check-engines": "wp-scripts check-engines",
@@ -29,5 +28,8 @@
 		"imagemin-webpack-plugin": "^2.4.2",
 		"stylelint-config-standard-scss": "^15.0.1",
 		"svg-spritemap-webpack-plugin": "^4.7.0"
+	},
+	"dependencies": {
+		"a11y-dialog": "^8.1.4"
 	}
 }
