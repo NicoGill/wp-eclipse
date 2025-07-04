@@ -20,40 +20,29 @@ get_header();
 
 ?>
 
-<main id="primary" class="site-main">
-	<?php if ( have_posts() ) : ?>
+<main id="primary" class="site-main" role="main">
+	<div class="wrapper">
+		<?php if ( have_posts() ) : ?>
 
-		<header class="page-header">
-			<h1 class="page-title"><?php single_post_title(); ?></h1>
-		</header>
+			<header class="page-header">
+				<h1 class="page-title"><?php single_post_title(); ?></h1>
+			</header>
 
-		<?php
-		while ( have_posts() ) :
-			the_post(); ?>
+			<?php
+			while ( have_posts() ) :
+				the_post();
+				get_template_part('template-parts/post/teaser');
 
-			<article>
-				<header>
-					<?php the_title(); ?>
-				</header>
-				<div>
-					<?php the_excerpt(); ?>
-				</div>
-				<footer>
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<?php esc_html_e('En savoir plus', 'wp_eclipse'); ?>
-					</a>
-				</footer>
-			</article>
-		<?php
-		endwhile;
+			endwhile;
 
-		the_posts_navigation();
+			the_posts_navigation();
 
-	else : ?>
+		else : ?>
 
-		<p><?php esc_html_e('Il n\'y a pas de contenu à afficher.', 'wp_eclipse'); ?></p>
+			<p><?php esc_html_e('Il n\'y a pas de contenu à afficher.', 'wp_eclipse'); ?></p>
 
-	<?php endif; ?>
+		<?php endif; ?>
+	</div>
 </main>
 
 <?php get_footer(); ?>

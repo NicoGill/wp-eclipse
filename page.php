@@ -19,13 +19,15 @@ defined('ABSPATH') || exit;
 get_header();
 ?>
 
-    <main id="primary" class="site-main">
-        <?php
-        while (have_posts()) :
-            the_post();
-            the_content();
-        endwhile;
-        ?>
+    <main id="primary" class="site-main" role="main">
+		<div class="wrapper">
+			<?php
+			while (have_posts()) :
+				the_post();
+				the_content();
+			endwhile;
+			?>
+		</div>
     </main>
 
 <?php get_footer(); ?>

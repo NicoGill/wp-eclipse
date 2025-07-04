@@ -15,7 +15,7 @@ get_header();
 
 ?>
 
-<main id="primary" class="site-main site-main--search">
+<main id="primary" class="site-main site-main--search" role="main">
 	<header class="page-header">
 		<h1 class="page-title">
 			<?php
@@ -27,22 +27,9 @@ get_header();
 	<?php
 	if ( have_posts() ) :
 		while ( have_posts() ) :
-			the_post(); ?>
-
-			<article>
-				<header>
-					<?php the_title(); ?>
-				</header>
-				<div>
-					<?php the_excerpt(); ?>
-				</div>
-				<footer>
-					<a href="<?php the_permalink(); ?>" rel="bookmark">
-						<?php esc_html_e('En savoir plus', 'wp_eclipse'); ?>
-					</a>
-				</footer>
-			</article>
-		<?php
+			the_post();
+	
+			get_template_part('template-parts/post/teaser');
 		endwhile;
 
 		the_posts_navigation();

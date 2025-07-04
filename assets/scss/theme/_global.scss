@@ -2,6 +2,12 @@
    Global and shared style over the theme
    ========================================================================== */
 
+@use '@scss/abstracts/index' as *;
+
+.wrapper {
+	@include wrap;
+}
+
 .icon {
 	display: inline-block;
 	fill: currentColor;
