@@ -13,7 +13,7 @@ namespace NicoGill\wp_eclipse;
  * @author WebDevStudios
  */
 function scripts() {
-	$asset_file_path = get_template_directory() . '/build/main.asset.php';
+	$asset_file_path = get_template_directory() . '/build/js/main.asset.php';
 
 	if ( is_readable( $asset_file_path ) ) {
 		$asset_file = include $asset_file_path;
@@ -25,8 +25,8 @@ function scripts() {
 	}
 
 	// Register styles & scripts.
-	wp_enqueue_style( 'wp_eclipse-styles', get_stylesheet_directory_uri() . '/build/theme.css', array(), $asset_file['version'] );
-	wp_enqueue_script( 'wp_eclipse-scripts', get_stylesheet_directory_uri() . '/build/main.js', $asset_file['dependencies'], $asset_file['version'], true );
+	wp_enqueue_style( 'wp_eclipse-styles', get_stylesheet_directory_uri() . '/build/css/theme.css', array(), $asset_file['version'] );
+	wp_enqueue_script( 'wp_eclipse-scripts', get_stylesheet_directory_uri() . '/build/js/main.js', $asset_file['dependencies'], $asset_file['version'], true );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
 
@@ -51,6 +51,6 @@ add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\conditional_load_cf7_assets'
  * Enqueue custom styles for the TinyMCE editor (classic)
  */
 function editor_styles() {
-	add_editor_style( 'build/tinymce.css' );
+	add_editor_style( 'build/css/tinymce.css' );
 }
 add_action( 'admin_init', __NAMESPACE__ . '\editor_styles' );

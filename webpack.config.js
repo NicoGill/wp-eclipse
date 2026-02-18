@@ -10,6 +10,40 @@ const BrowserSyncPlugin = require( 'browser-sync-webpack-plugin' );
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const moveRtlCssAssetsPlugin = {
+	apply( compiler ) {
+		compiler.hooks.thisCompilation.tap(
+			'MoveRtlCssAssetsPlugin',
+			( compilation ) => {
+				const { Compilation } = compiler.webpack;
+
+				compilation.hooks.processAssets.tap(
+					{
+						name: 'MoveRtlCssAssetsPlugin',
+						stage: Compilation.PROCESS_ASSETS_STAGE_REPORT,
+					},
+					() => {
+						Object.keys( compilation.assets ).forEach( ( assetName ) => {
+							if (
+								! assetName.endsWith( '-rtl.css' ) ||
+								assetName.startsWith( 'css/' ) ||
+								assetName.startsWith( 'blocks/' )
+							) {
+								return;
+							}
+
+							const targetName = `css/${ assetName }`;
+							const asset = compilation.getAsset( assetName );
+							compilation.emitAsset( targetName, asset.source );
+							compilation.deleteAsset( assetName );
+						} );
+					}
+				);
+			}
+		);
+	},
+};
+
 const entries = {
 	main: path.resolve( __dirname, 'assets/js/main.js' ),
 	theme: path.resolve( __dirname, 'assets/scss/main.scss' ),
@@ -76,6 +110,7 @@ plugins.push(
 		},
 	} )
 );
+plugins.push( moveRtlCssAssetsPlugin );
 
 if ( ! isProduction ) {
 	plugins.push(
@@ -97,12 +132,35 @@ if ( ! isProduction ) {
 	);
 }
 
+// Keep block assets near block.json for WordPress block metadata resolution.
+const jsOutputFilename = ( pathData ) => {
+	const name = pathData.chunk?.name || '';
+	return name.startsWith( 'blocks/' ) ? '[name].js' : 'js/[name].js';
+};
+
+plugins.forEach( ( plugin ) => {
+	if ( plugin?.constructor?.name === 'MiniCssExtractPlugin' ) {
+		plugin.options.filename = ( pathData ) => {
+			const name = pathData.chunk?.name || '';
+			return name.startsWith( 'blocks/' )
+				? '[name].css'
+				: 'css/[name].css';
+		};
+		plugin.options.chunkFilename = '[id].css';
+	}
+
+	if ( plugin?.constructor?.name === 'RtlCssPlugin' ) {
+		return;
+	}
+} );
+
 module.exports = {
 	...defaultConfig,
 	entry: entries,
 	output: {
 		path: path.resolve( __dirname, 'build' ),
-		filename: '[name].js',
+		filename: jsOutputFilename,
+		clean: true,
 	},
 	optimization: {
 		...defaultConfig.optimization,
