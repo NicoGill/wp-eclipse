@@ -78,23 +78,15 @@ function setup() {
 	// Add theme support for selective refresh for widgets.
 	remove_theme_support( 'customize-selective-refresh-widgets' );
 
-	// Disable Gutenberg editor
-	add_filter( 'use_block_editor_for_post', '__return_false', 10 );
+	// Block editor support in a classic theme.
+	add_theme_support( 'align-wide' );
+	add_theme_support( 'editor-styles' );
+	add_theme_support( 'wp-block-styles' );
+	add_editor_style( 'build/theme.css' );
 
-	// Disable Gutenberg widgets
-	add_filter( 'use_widgets_block_editor', '__return_false' );
-
-	// Gutenberg support for full-width/wide alignment of supported blocks.
-	remove_theme_support( 'align-wide' );
-
-	// Gutenberg editor styles support.
-	remove_theme_support( 'editor-styles' );
-
-	// Remove default patterns.
-	remove_theme_support( 'core-block-patterns' );
+	// Keep templates managed by PHP in this classic theme.
 	remove_theme_support( 'block-templates' );
 	remove_theme_support( 'block-template-parts' );
-	remove_theme_support( 'wp-block-styles' );
 }
 
 add_action( 'after_setup_theme', __NAMESPACE__ . '\setup' );

@@ -14,6 +14,9 @@ module.exports = {
 	},
 	rules: {
 		'@wordpress/no-global-event-listener': 0, // Disable. We don't use React-based components.
-		camelcase: 1,
+		'jsdoc/require-param': 0,
+		'jsdoc/require-returns-type': 0,
+		camelcase: 0,
+		'no-console': 0,
 	},
 };

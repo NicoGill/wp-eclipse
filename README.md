@@ -34,3 +34,18 @@ Command | Action
 :- | :-
 `npm run start` | Builds assets and starts Live Reload and Browsersync servers
 `npm run build` | Builds production-ready assets for a deployment
+`npm run create:block -- my-block` | Creates a Gutenberg block scaffold in `/blocks/my-block`
+`npm run create:block:acf -- my-acf-block` | Creates an ACF-compatible block scaffold in `/blocks/my-acf-block`
+`npm run lint:js` | Runs JavaScript linting
+`npm run lint:js:fix` | Runs JavaScript linting with auto-fix
+`npm run lint:css` | Runs SCSS linting
+`npm run lint:css:fix` | Runs SCSS linting with auto-fix
+`npm run lint:style` | Runs stylelint on `/assets` and `/blocks`
+`npm run lint:style:fix` | Runs stylelint with auto-fix on `/assets` and `/blocks`
+
+## Blocks
+
+- Source of truth is `/blocks/*` and `/assets/*`.
+- Compiled files are written to `/build` via `@wordpress/scripts`.
+- Blocks are auto-registered from `/build/blocks` on WordPress `init`.
+- ACF Pro blocks are supported via `block.json` (`acf.renderTemplate`).
