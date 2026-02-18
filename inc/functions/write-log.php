@@ -8,9 +8,11 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * @param mixed $log
+ * Logs the provided data to the error log.
  *
- * @return [type]
+ * @param mixed $log The data to be logged. Can be a string, array, object, or null.
+ *
+ * @return void
  */
 function write_log( $log ) {
 	if ( is_array( $log ) || is_object( $log ) ) {
