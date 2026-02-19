@@ -1,14 +1,44 @@
 {
 	"name": "wp-eclipse",
-	"version": "1.0.0",
-	"description": "",
+	"homepage": "https://github.com/NicoGill/wp-eclipse",
+	"keywords": [
+		"wordpress",
+		"theme",
+		"gutenberg"
+	],
+	"license": "GPL-2.0-or-later",
+	"version": "1.2.1",
+	"description": "WordPress development starter hybrid theme by (and mostly for) Nicolas Gillium.",
+	"author": "NicoGill",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NicoGill/wp-eclipse.git"
+	},
+	"bugs": "https://github.com/NicoGill/wp-eclipse/issues",
+	"private": true,
+	"devDependencies": {
+		"@wordpress/create-block": "^4.83.0",
+		"@wordpress/prettier-config": "^4.40.0",
+		"@wordpress/scripts": "^31.5.0",
+		"@wordpress/stylelint-config": "^23.32.0",
+		"browser-sync-webpack-plugin": "^2.4.0",
+		"copy-webpack-plugin": "^13.0.1",
+		"cross-env": "^10.1.0",
+		"eslint-plugin-eslint-comments": "^3.2.0",
+		"glob": "^13.0.5",
+		"image-minimizer-webpack-plugin": "^4.1.4",
+		"sharp": "^0.34.5",
+		"svg-spritemap-webpack-plugin": "^5.1.0"
+	},
+	"dependencies": {
+		"a11y-dialog": "^8.1"
+	},
 	"scripts": {
 		"build": "wp-scripts build",
-		"check-engines": "wp-scripts check-engines",
-		"check-licenses": "wp-scripts check-licenses",
-		"create:block": "node scripts/create-block.js",
-		"create:block:acf": "node scripts/create-block.js --acf",
-		"start": "wp-scripts start",
+		"create:block": "npm run create:block:run -- --variant dynamic",
+		"create:block:acf": "npm run create:block:run -- --variant acf",
+		"create:block:run": "cd blocks && create-block --template ../inc/block-template --no-plugin",
+		"start": "cross-env NODE_OPTIONS=--no-deprecation wp-scripts start",
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:css:fix": "wp-scripts lint-style --fix",
@@ -18,25 +48,5 @@
 		"lint:style:fix": "stylelint \"assets/**/*.scss\" \"blocks/**/*.scss\" --fix",
 		"lint:md:docs": "wp-scripts lint-md-docs",
 		"lint:pkg-json": "wp-scripts lint-pkg-json"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/NicoGill/wp-eclipse.git"
-	},
-	"private": true,
-	"devDependencies": {
-		"@wordpress/scripts": "^31.5.0",
-		"browser-sync-webpack-plugin": "^2.4.0",
-		"copy-webpack-plugin": "^13.0.1",
-		"eslint-plugin-eslint-comments": "^3.2.0",
-		"glob": "^13.0.5",
-		"image-minimizer-webpack-plugin": "^4.1.4",
-		"sharp": "^0.34.4",
-		"stylelint": "^16.24.0",
-		"stylelint-config-standard-scss": "^16.0.0",
-		"svg-spritemap-webpack-plugin": "^5.1.0"
-	},
-	"dependencies": {
-		"a11y-dialog": "^8.1.5"
 	}
 }

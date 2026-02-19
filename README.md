@@ -69,7 +69,7 @@ Recommended replacement steps:
 6. Search for `wp-eclipse` and replace with `your-theme-slug` (npm package name, block namespace default, repository URL).
 7. Search for `nicogill/eclipse` and replace with `yourvendor/your-theme-slug` (Composer package name).
 8. Search for `eclipse.test` and replace with your local domain (example: `acme-studio.test`) in development-only files (`webpack.config.js`, `inc/hooks/dev-only.php`).
-9. Search for `Text Domain: eclipse` in `style.css` and replace with `Text Domain: your_theme_slug` (or your final text domain convention).
+9. Search for `Text Domain: wp_eclipse` in `style.css` and replace with `Text Domain: your_theme_slug` (or your final text domain convention).
 
 Then update:
 
@@ -84,8 +84,8 @@ Command | Action
 :- | :-
 `npm run start` | Builds assets and starts Live Reload and Browsersync servers
 `npm run build` | Builds production-ready assets for a deployment
-`npm run create:block -- my-block` | Creates a Gutenberg block scaffold in `/blocks/my-block`
-`npm run create:block:acf -- my-acf-block` | Creates an ACF-compatible block scaffold in `/blocks/my-acf-block`
+`npm run create:block` | Runs an interactive prompt to scaffold a dynamic Gutenberg block (with `render.php`) in `/blocks`
+`npm run create:block:acf` | Runs an interactive prompt to scaffold an ACF-compatible block in `/blocks`
 `npm run lint:js` | Runs JavaScript linting
 `npm run lint:js:fix` | Runs JavaScript linting with auto-fix
 `npm run lint:css` | Runs SCSS linting
@@ -99,3 +99,4 @@ Command | Action
 - Compiled files are written to `/build` via `@wordpress/scripts`.
 - Blocks are auto-registered from `/build/blocks` on WordPress `init`.
 - ACF Pro blocks are supported via `block.json` (`acf.renderTemplate`).
+- Block scaffolding template is stored in `/inc/block-template`.

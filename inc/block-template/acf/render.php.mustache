@@ -1,0 +1,16 @@
+<?php
+/**
+ * ACF block template for {{namespace}}/{{slug}}.
+ *
+ * @package wp_eclipse
+ */
+
+namespace NicoGill\wp_eclipse;
+
+$title = get_field( 'title' );
+?>
+<section <?php echo get_block_wrapper_attributes(); ?>>
+	<?php if ( ! empty( $title ) ) : ?>
+		<h2><?php echo esc_html( $title ); ?></h2>
+	<?php endif; ?>
+</section>

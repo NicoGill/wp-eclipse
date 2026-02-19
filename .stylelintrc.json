@@ -1,8 +1,7 @@
 {
 	"extends": [
 		"@wordpress/stylelint-config",
-		"@wordpress/stylelint-config/scss",
-		"stylelint-config-standard-scss"
+		"@wordpress/stylelint-config/scss"
 	],
 	"rules": {
 		"alpha-value-notation": null,
@@ -22,7 +21,7 @@
 		"number-max-precision": [
 			2,
 			{
-				"ignoreUnits": [ "em" ],
+				"ignoreUnits": ["em"],
 				"severity": "warning"
 			}
 		],

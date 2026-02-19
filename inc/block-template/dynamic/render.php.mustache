@@ -1,0 +1,12 @@
+<?php
+/**
+ * Dynamic block template for {{namespace}}/{{slug}}.
+ *
+ * @package wp_eclipse
+ */
+
+namespace NicoGill\wp_eclipse;
+?>
+<section <?php echo get_block_wrapper_attributes(); ?>>
+	<p><?php echo esc_html( __( '{{title}}', '{{textdomain}}' ) ); ?></p>
+</section>
