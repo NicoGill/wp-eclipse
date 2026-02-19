@@ -29,7 +29,7 @@ add_filter( 'nav_menu_item_id', __NAMESPACE__ . '\clear_nav_menu_item_id', 10, 3
  * @param object $args The menu arguments.
  * @param int    $depth The depth of the menu.
  *
- * @return array The modified menu items.
+ * @return string The modified menu items.
  */
 function socials_nav_menu_item_title( $title, $item, $args, $depth ) {
 

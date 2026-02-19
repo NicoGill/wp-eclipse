@@ -19,7 +19,6 @@ function category_transient_flusher() {
 		return false;
 	}
 
-	// Like, beat it. Dig?
 	return delete_transient( 'wp_eclipse_categories' );
 }
 

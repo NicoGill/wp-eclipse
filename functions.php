@@ -26,6 +26,7 @@ function include_inc_files()
 		'inc/taxonomies/', // Load custom taxonomies.
 		'inc/post-types/', // Load custom post types.
 		'inc/setup/', // Theme setup.
+		'inc/gutenberg/', // Blocks configurations, filters and hooks.
 		'inc/shortcodes/', // Load shortcodes.
 		'inc/template-tags/', // Custom template tags for this theme.
 	);

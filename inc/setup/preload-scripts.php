@@ -30,3 +30,5 @@ function preload_scripts() {
 	<?php
 }
 add_action( 'wp_head', __NAMESPACE__ . '\preload_scripts', 1 );
+
+

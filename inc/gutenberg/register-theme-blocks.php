@@ -1,6 +1,6 @@
 <?php
 /**
- * Register theme blocks from /build/blocks.
+ * Auto-register theme blocks from /build/blocks directory.
  *
  * @package wp_eclipse
  */
@@ -8,7 +8,7 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * Register all blocks compiled in build/blocks.
+ * Register all blocks compiled in build/blocks using block.json metadata.
  */
 function register_theme_blocks() {
 	$blocks_path = get_template_directory() . '/build/blocks';

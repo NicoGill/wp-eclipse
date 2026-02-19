@@ -44,10 +44,10 @@ add_filter('walker_nav_menu_start_el', function ($item_output, $item, $depth, $a
  *
  * Example: `icon-arrow` includes svg `arrow` from SVG sprite.
  *
- * @param string $title the title of menu item
- * @param WP_Post $item menu item object
- * @param stdObject $args wp_nav_menu() arguments
- * @param int $depth depth of the menu
+ * @param string $title The menu item’s title.
+ * @param WP_Post $item The current menu item object.
+ * @param object $args An object of wp_nav_menu() arguments.
+ * @param int $depth Depth of menu item. Used for padding.
  *
  * @return string menu item with possible description
  */
