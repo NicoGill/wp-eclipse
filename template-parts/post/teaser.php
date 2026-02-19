@@ -15,7 +15,7 @@ namespace NicoGill\wp_eclipse;
 	<header>
 		<?php print_post_primary_term_link(); ?>
 
-		<?php the_post_thumbnail('medium'); ?>
+		<?php the_post_thumbnail( 'medium' ); ?>
 
 		<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
 
@@ -26,7 +26,7 @@ namespace NicoGill\wp_eclipse;
 	</div>
 	<footer>
 		<a href="<?php the_permalink(); ?>" rel="bookmark">
-			<?php esc_html_e('En savoir plus', 'wp_eclipse'); ?>
+			<?php esc_html_e( 'En savoir plus', 'wp_eclipse' ); ?>
 		</a>
 	</footer>
 </article>

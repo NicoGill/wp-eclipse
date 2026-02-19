@@ -11,7 +11,7 @@
 
 namespace NicoGill\wp_eclipse;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 ?>
 <!DOCTYPE html>
@@ -37,7 +37,8 @@ defined('ABSPATH') || exit;
 				<?php
 				$custom_logo_id = get_theme_mod( 'custom_logo' );
 
-				if ( $custom_logo_id ) : ?>
+				if ( $custom_logo_id ) :
+					?>
 					<div class="site-header__branding">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header__logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
 							<?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
@@ -63,7 +64,7 @@ defined('ABSPATH') || exit;
 					</nav>
 				<?php endif; ?>
 
-				<?php get_template_part('template-parts/global/menu-toggle'); ?>
+				<?php get_template_part( 'template-parts/global/menu-toggle' ); ?>
 			</div>
 		</header>
 

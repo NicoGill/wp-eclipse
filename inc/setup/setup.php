@@ -37,11 +37,14 @@ function setup() {
 	 */
 	add_theme_support( 'title-tag' );
 
-	add_theme_support( 'custom-logo', array(
-		'height'      => 100,
-		'width'       => 250,
-		'flex-height' => true,
-	) );
+	add_theme_support(
+		'custom-logo',
+		array(
+			'height'      => 100,
+			'width'       => 250,
+			'flex-height' => true,
+		)
+	);
 
 	/**
 	 * Enable support for Post Thumbnails on posts and pages.

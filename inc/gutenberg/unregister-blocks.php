@@ -60,4 +60,4 @@ function unregister_custom_blocks( $allowed_blocks, $editor_context ) {
 
 	return array_values( array_diff( $blocks, $blacklist ) );
 }
-add_filter('allowed_block_types_all', __NAMESPACE__ . '\unregister_custom_blocks', 100, 2);
+add_filter( 'allowed_block_types_all', __NAMESPACE__ . '\unregister_custom_blocks', 100, 2 );

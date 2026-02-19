@@ -18,8 +18,7 @@ namespace NicoGill\wp_eclipse;
  *
  * @return void This function outputs an edit link or does nothing if no edit link is available.
  */
-function print_edit_link(): void
-{
+function print_edit_link(): void {
 
 	global $post;
 

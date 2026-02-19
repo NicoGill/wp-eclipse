@@ -14,13 +14,11 @@ if ( ! function_exists( 'get_primary_term' ) ) {
 	 * Get primary term for post.
 	 *
 	 * @param integer $post_id Which post to get the primary term for, if empty current post is used.
-	 * @param string $taxonomy From which taxonomy to get the term from, defaults to term.
+	 * @param string  $taxonomy From which taxonomy to get the term from, defaults to term.
 	 *
 	 * @return false|WP_Term Boolean false of no term, otherwise WP_Term object.
-	 *
 	 */
-	function get_primary_term(int $post_id = 0, string $taxonomy = 'category' ) : false|WP_Term
-	{
+	function get_primary_term( int $post_id = 0, string $taxonomy = 'category' ): false|WP_Term {
 		$post_id = ! empty( $post_id ) ? $post_id : get_the_id();
 
 		$primary_meta_keys = [

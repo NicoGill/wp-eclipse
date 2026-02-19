@@ -73,8 +73,7 @@ add_filter( 'wp_get_attachment_image_attributes', __NAMESPACE__ . '\filter_wp_ge
  *
  * @return array Mime types.
  */
-function custom_mime_types( $mimes ): array
-{
+function custom_mime_types( $mimes ): array {
 	$mimes['svg']  = 'image/svg+xml';
 	$mimes['svgz'] = 'image/svg+xml';
 
@@ -91,8 +90,7 @@ add_filter( 'upload_mimes', __NAMESPACE__ . '\custom_mime_types' );
  *
  * @return string The updated $block_title.
  */
-function remove_archive_title_prefix( $block_title ): string
-{
+function remove_archive_title_prefix( $block_title ): string {
 	// Get the single category title with no prefix.
 	$single_cat_title = single_term_title( '', false );
 
@@ -112,8 +110,7 @@ add_filter( 'big_image_size_threshold', '__return_false' );
 /**
  * Disable WordPress search functionality
  */
-function remove_s_query( $query, $error = true ): void
-{
+function remove_s_query( $query, $error = true ): void {
 
 	if ( is_search() && ! is_admin() ) {
 		$query->is_search       = false;

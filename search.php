@@ -9,7 +9,7 @@
 
 namespace NicoGill\wp_eclipse;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
@@ -29,14 +29,15 @@ get_header();
 		while ( have_posts() ) :
 			the_post();
 
-			get_template_part('template-parts/post/teaser');
+			get_template_part( 'template-parts/post/teaser' );
 		endwhile;
 
 		the_posts_navigation();
 
-	else : ?>
+	else :
+		?>
 
-		<p><?php esc_html_e('Rien ne correspond à votre recherche.', 'wp_eclipse'); ?></p>
+		<p><?php esc_html_e( 'Rien ne correspond à votre recherche.', 'wp_eclipse' ); ?></p>
 
 	<?php endif; ?>
 </main>

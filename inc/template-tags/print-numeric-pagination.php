@@ -13,12 +13,11 @@ use WP_Query;
  * Displays numeric pagination on archive pages.
  *
  * @param WP_Query|null $query The Query object; only passed if a custom WP_Query is used.
- * @param array $args Array of params to customize output.
+ * @param array         $args Array of params to customize output.
  *
  * @return void
  */
-function print_numeric_pagination(?WP_Query $query = null, array $args = []): void
-{
+function print_numeric_pagination( ?WP_Query $query = null, array $args = [] ): void {
 	if ( ! $query ) {
 		global $wp_query;
 		$query = $wp_query;

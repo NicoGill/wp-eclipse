@@ -10,20 +10,20 @@
 
 namespace NicoGill\wp_eclipse;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 ?>
 
-    <main id="primary" class="site-main site-main--front" role="main">
+	<main id="primary" class="site-main site-main--front" role="main">
 		<div class="wrapper">
 			<?php
-			while (have_posts()) :
+			while ( have_posts() ) :
 				the_post();
 				the_content();
 			endwhile;
 			?>
 		</div>
-    </main>
+	</main>
 
 <?php get_footer(); ?>

@@ -11,11 +11,10 @@ namespace NicoGill\wp_eclipse;
 /**
  * Print the first category associated with a post.
  *
- * @param int $post_id The ID of the post.
+ * @param int    $post_id The ID of the post.
  * @param string $taxonomy
  */
-function print_post_primary_term_link(int $post_id = 0, string $taxonomy = 'category' ): void
-{
+function print_post_primary_term_link( int $post_id = 0, string $taxonomy = 'category' ): void {
 	if ( ! $post_id ) {
 		$post_id = get_the_ID();
 	}
@@ -23,14 +22,14 @@ function print_post_primary_term_link(int $post_id = 0, string $taxonomy = 'cate
 	$term = get_primary_term( $post_id, $taxonomy );
 
 	if ( $term ) {
-		$term_name 	= $term->name;
-		$url 		= get_term_link( $term );
+		$term_name = $term->name;
+		$url       = get_term_link( $term );
 
-		if( !empty($url) && !is_wp_error($url)) :
-			echo sprintf(
+		if ( ! empty( $url ) && ! is_wp_error( $url ) ) :
+			printf(
 				'<a href="%s">%s</a>',
-				esc_url($url),
-				esc_html($term_name)
+				esc_url( $url ),
+				esc_html( $term_name )
 			);
 		endif;
 	}

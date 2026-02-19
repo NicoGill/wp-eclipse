@@ -36,7 +36,7 @@ function get_svg( $args = [] ) {
 		'stroke-width' => '',
 		'height'       => '',
 		'width'        => '',
-		'class'      => [],
+		'class'        => [],
 	];
 
 	// Parse args.
@@ -66,10 +66,10 @@ function get_svg( $args = [] ) {
 	$width        = ( $args['width'] ) ? ' width="' . $args['width'] . '"' : '';
 
 	// Combine base and additional classes.
-	$base_classes      = [ 'icon', $args['icon'] ];
+	$base_classes       = [ 'icon', $args['icon'] ];
 	$additional_classes = is_array( $args['class'] ) ? $args['class'] : [];
-	$all_classes       = array_merge( $base_classes, $additional_classes );
-	$classes_string    = implode( ' ', array_map( 'esc_attr', $all_classes ) );
+	$all_classes        = array_merge( $base_classes, $additional_classes );
+	$classes_string     = implode( ' ', array_map( 'esc_attr', $all_classes ) );
 
 	// Start a buffer...
 	ob_start();
@@ -86,7 +86,7 @@ function get_svg( $args = [] ) {
 		<?php
 		echo get_post_content( $aria_hidden ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 		echo get_post_content( $aria_labelledby ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
-	?>
+		?>
 		role="img">
 		<title id="<?php echo esc_attr( $block_title_id ); ?>">
 			<?php echo esc_html( $block_title ); ?>

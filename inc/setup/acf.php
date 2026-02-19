@@ -67,13 +67,13 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 			)
 		);
 
-//		acf_add_options_sub_page(
-//			array(
-//				'page_title'  => __( 'Contenu de la page FAQ', 'wp_eclipse' ),
-//				'menu_title'  => __( 'Page FAQ', 'wp_eclipse' ),
-//				'parent_slug' => 'edit.php?post_type=faq',
-//			)
-//		);
+		// acf_add_options_sub_page(
+		// array(
+		// 'page_title'  => __( 'Contenu de la page FAQ', 'wp_eclipse' ),
+		// 'menu_title'  => __( 'Page FAQ', 'wp_eclipse' ),
+		// 'parent_slug' => 'edit.php?post_type=faq',
+		// )
+		// );
 	}
 
 	add_action( 'acf/init', __NAMESPACE__ . '\add_options_pages' );

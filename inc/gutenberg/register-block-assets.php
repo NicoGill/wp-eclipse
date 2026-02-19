@@ -12,29 +12,27 @@ namespace NicoGill\wp_eclipse;
  *
  * @return void
  */
-function enqueue_editor_filters_script()
-{
+function enqueue_editor_filters_script() {
 	wp_enqueue_script(
 		'editor_filters_script',
 		get_template_directory_uri() . '/build/js/filters.js',
-		array('wp-blocks', 'wp-dom-ready', 'wp-edit-post'),
-		wp_get_theme()->get('Version'),
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-edit-post' ),
+		wp_get_theme()->get( 'Version' ),
 		true
 	);
 }
-add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_editor_filters_script');
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\enqueue_editor_filters_script' );
 
 /**
  * Register block variations.
  */
-function register_block_variations()
-{
+function register_block_variations() {
 	wp_enqueue_script(
 		'wdsbt-enqueue-block-variations',
 		get_template_directory_uri() . '/build/js/variations.js',
-		array('wp-blocks', 'wp-dom-ready', 'wp-element', 'wp-primitives'),
-		wp_get_theme()->get('Version'),
+		array( 'wp-blocks', 'wp-dom-ready', 'wp-element', 'wp-primitives' ),
+		wp_get_theme()->get( 'Version' ),
 		true
 	);
 }
-add_action('enqueue_block_editor_assets', __NAMESPACE__ . '\register_block_variations');
+add_action( 'enqueue_block_editor_assets', __NAMESPACE__ . '\register_block_variations' );

@@ -14,7 +14,7 @@
 
 namespace NicoGill\wp_eclipse;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 get_header();
 
@@ -31,15 +31,16 @@ get_header();
 			<?php
 			while ( have_posts() ) :
 				the_post();
-				get_template_part('template-parts/post/teaser');
+				get_template_part( 'template-parts/post/teaser' );
 
 			endwhile;
 
 			the_posts_navigation();
 
-		else : ?>
+		else :
+			?>
 
-			<p><?php esc_html_e('Il n\'y a pas de contenu à afficher.', 'wp_eclipse'); ?></p>
+			<p><?php esc_html_e( 'Il n\'y a pas de contenu à afficher.', 'wp_eclipse' ); ?></p>
 
 		<?php endif; ?>
 	</div>

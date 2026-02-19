@@ -42,7 +42,7 @@ function tinymce_custom_formats( $init ) {
 
 	$style_formats = array(
 		array(
-			'title'    => esc_html__('Titre', 'wp_eclipse'),
+			'title'    => esc_html__( 'Titre', 'wp_eclipse' ),
 			'selector' => 'p, h1, h2, h3, h4, h5, h6, span, li',
 			'classes'  => 'text-title',
 			'wrapper'  => false,

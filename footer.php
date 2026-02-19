@@ -9,19 +9,19 @@
 
 namespace NicoGill\wp_eclipse;
 
-defined('ABSPATH') || exit;
+defined( 'ABSPATH' ) || exit;
 
 ?>
 			<footer id="colophon" class="site-footer">
 				<div class="site-footer__inner">
-					<p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+					<p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?></p>
 				</div>
 			</footer>
 
 			<div class="mobile-menu js-mobile-menu">
 				<div class="mobile-menu__nav" role="dialog">
 
-					<?php get_template_part('template-parts/global/menu-toggle'); ?>
+					<?php get_template_part( 'template-parts/global/menu-toggle' ); ?>
 
 					<div class="mobile-menu__nav__inner">
 						<?php if ( has_nav_menu( 'primary' ) ) : ?>
