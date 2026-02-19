@@ -39,6 +39,12 @@ All `*.php` files inside these directories are auto-loaded by `functions.php`.
 
 Note: `inc/post-types/`, `inc/taxonomies/`, and `inc/shortcodes/` are scaffold directories and may be empty in a fresh install.
 
+## Requirements
+
+- Node.js `>= 18.12.0`
+- npm `>= 8.19.2`
+- Composer `>= 2.9`
+
 ## Setup
 
 ```bash
@@ -92,6 +98,10 @@ Command | Action
 `npm run lint:css:fix` | Runs SCSS linting with auto-fix
 `npm run lint:style` | Runs stylelint on `/assets` and `/blocks`
 `npm run lint:style:fix` | Runs stylelint with auto-fix on `/assets` and `/blocks`
+`composer run format` | Runs PHP Code Beautifier and Fixer (`phpcbf`)
+`composer run lint` | Runs PHP_CodeSniffer checks (`phpcs`)
+`composer run report` | Runs a full PHP_CodeSniffer report
+`composer run pot` | Generates/updates the POT file for translations
 
 ## Blocks
 
