@@ -82,7 +82,7 @@ function get_svg( $args = [] ) {
 		echo get_post_content( $color ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 		echo get_post_content( $stroke_width ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 	?>
-		class="<?php echo $classes_string; ?>"
+		class="<?php echo $classes_string; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.?>"
 		<?php
 		echo get_post_content( $aria_hidden ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.
 		echo get_post_content( $aria_labelledby ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK.

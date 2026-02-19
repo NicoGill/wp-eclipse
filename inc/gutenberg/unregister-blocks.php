@@ -7,7 +7,13 @@
 
 namespace NicoGill\wp_eclipse;
 
-function unregister_custom_blocks( $allowed_blocks, $editor_context ) {
+/**
+ * Filters the list of allowed blocks by removing a predefined set of blacklisted blocks.
+ *
+ * @return array The modified list of blocks allowed in the editor, excluding blacklisted blocks.
+ */
+function unregister_custom_blocks(): array
+{
 	$blocks = array_keys( \WP_Block_Type_Registry::get_instance()->get_all_registered() );
 
 	$blacklist = [

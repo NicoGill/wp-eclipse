@@ -19,7 +19,7 @@ function show_second_editor_row( $tinymce ) {
 add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\show_second_editor_row' );
 
 /**
- *  Add custom styles to TinyMCE editor.
+ * Add custom styles to TinyMCE editor.
  *
  * @param  array $buttons TinyMCE init array.
  *
@@ -27,7 +27,7 @@ add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\show_second_editor_row' );
  */
 function tinymce2_custom_buttons( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
-	// add custom HTML elements to the style dropdown
+	// add custom HTML elements to the style dropdown.
 	array_push( $buttons, 'spacer_select', 'button_select' );
 
 	return $buttons;
@@ -35,7 +35,11 @@ function tinymce2_custom_buttons( $buttons ) {
 add_filter( 'mce_buttons_2', __NAMESPACE__ . '\tinymce2_custom_buttons' );
 
 /**
- *  Customize Tiny MCE formats from editor.
+ * Customize Tiny MCE formats from editor.
+ *
+ * @param array $init An array with TinyMCE config.
+ *
+ * @return array
  */
 function tinymce_custom_formats( $init ) {
 	$init['block_formats'] = 'Paragraph=p;Heading 1=h1;Heading 2=h2;Heading 3=h3;Heading 4=h4;';
@@ -47,10 +51,9 @@ function tinymce_custom_formats( $init ) {
 			'classes'  => 'text-title',
 			'wrapper'  => false,
 		),
-		// ...
 	);
 
-	// Insert the array, JSON ENCODED, into 'style_formats'
+	// Insert the array, JSON ENCODED, into 'style_formats'.
 	$init['style_formats'] = wp_json_encode( $style_formats );
 
 	return $init;

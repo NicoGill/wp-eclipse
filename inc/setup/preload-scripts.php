@@ -18,16 +18,16 @@ function preload_scripts() {
 	if ( is_readable( $asset_file_path ) ) {
 		$asset_file = include $asset_file_path;
 	} else {
-		$theme           = wp_get_theme( get_template() );
-		$theme_version   = $theme->get( 'Version' );
+		$theme         = wp_get_theme( get_template() );
+		$theme_version = $theme->get( 'Version' );
 
 		$asset_file = array(
-			'version'     	=> $theme_version,
+			'version' => $theme_version,
 		);
 	}
 
-	$style_url   	= get_stylesheet_directory_uri() . '/build/css/theme.css';
-	$script_url 	= get_stylesheet_directory_uri() . '/build/js/main.js';
+	$style_url  = get_stylesheet_directory_uri() . '/build/css/theme.css';
+	$script_url = get_stylesheet_directory_uri() . '/build/js/main.js';
 
 	?>
 	<link rel="preload" href="<?php echo esc_url( $style_url ); ?>?ver=<?php echo esc_html( $asset_file['version'] ); ?>" as="style">

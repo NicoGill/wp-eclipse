@@ -16,10 +16,10 @@ namespace NicoGill\wp_eclipse;
  */
 function write_log( $log ) {
 	if ( is_array( $log ) || is_object( $log ) ) {
-		error_log( print_r( $log, true ) );
+		error_log( print_r( $log, true ) ); // phpcs:ignore
 	} elseif ( is_null( $log ) ) {
-		error_log( 'NULL' );
+		error_log( 'NULL' ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 	} else {
-		error_log( $log );
+		error_log( $log ); // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_error_log
 	}
 }

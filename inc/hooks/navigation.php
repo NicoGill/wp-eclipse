@@ -23,10 +23,10 @@ add_filter(
 	'walker_nav_menu_start_el',
 	function ( $item_output, $item, $depth, $args ) {
 
-		if ( $args->theme_location == 'primary' ) {
+		if ( 'primary' === $args->theme_location ) {
 			foreach ( $item->classes as $value ) {
-				if ( $value == 'menu-item-has-children' ) {
-					// add caret button. not focusable as tab navigation is handeled without this button
+				if ( $value === 'menu-item-has-children' ) {
+					// add caret button. not focusable as tab navigation is handeled without this button.
 					$item_output .= '<button class="menu-item__caret js-menu-caret">' .
 					get_svg(
 						[
@@ -46,8 +46,8 @@ add_filter(
 								'class' => [ 'menu-item__caret__icon', 'menu-item__caret__icon--mobile', 'menu-item__caret__icon--close' ],
 							]
 						) .
-						'<span class="menu-item__caret__text-open">' . esc_html__( 'Ouvrir le sous-menu', 'wp_eclipe' ) . '</span>' .
-						'<span class="menu-item__caret__text-close">' . esc_html__( 'Fermer le sous-menu', 'wp_eclipe' ) . '</span>' .
+						'<span class="menu-item__caret__text-open">' . esc_html__( 'Ouvrir le sous-menu', 'wp_eclipse' ) . '</span>' .
+						'<span class="menu-item__caret__text-close">' . esc_html__( 'Fermer le sous-menu', 'wp_eclipse' ) . '</span>' .
 						'</button>';
 				}
 			}

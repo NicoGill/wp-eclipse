@@ -18,12 +18,12 @@ function scripts() {
 	if ( is_readable( $asset_file_path ) ) {
 		$asset_file = include $asset_file_path;
 	} else {
-		$theme           = wp_get_theme( get_template() );
-		$theme_version   = $theme->get( 'Version' );
+		$theme         = wp_get_theme( get_template() );
+		$theme_version = $theme->get( 'Version' );
 
 		$asset_file = array(
-			'version'     	=> $theme_version,
-			'dependencies' 	=> array( 'wp-polyfill' ),
+			'version'      => $theme_version,
+			'dependencies' => array( 'wp-polyfill' ),
 		);
 	}
 

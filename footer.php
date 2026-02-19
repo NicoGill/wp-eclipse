@@ -14,7 +14,15 @@ defined( 'ABSPATH' ) || exit;
 ?>
 			<footer id="colophon" class="site-footer">
 				<div class="site-footer__inner">
-					<p>&copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?></p>
+					<?php
+					echo wp_kses_post(
+						sprintf(
+							'<p>%s %s</p>',
+							esc_html( date( 'Y' ) ),
+							esc_html( get_bloginfo( 'name' ) )
+						)
+					);
+					?>
 				</div>
 			</footer>
 

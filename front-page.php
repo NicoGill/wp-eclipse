@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The template for displaying a static front page.
  *
@@ -13,6 +12,7 @@ namespace NicoGill\wp_eclipse;
 defined( 'ABSPATH' ) || exit;
 
 get_header();
+
 ?>
 
 	<main id="primary" class="site-main site-main--front" role="main">

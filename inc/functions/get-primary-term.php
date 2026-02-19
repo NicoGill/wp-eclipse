@@ -22,13 +22,13 @@ if ( ! function_exists( 'get_primary_term' ) ) {
 		$post_id = ! empty( $post_id ) ? $post_id : get_the_id();
 
 		$primary_meta_keys = [
-			'_yoast_wpseo_primary_' . $taxonomy, // Primary term from Yoast setting
-			'_primary_term_' . $taxonomy, // Autodescription primary term setting
+			'_yoast_wpseo_primary_' . $taxonomy, // Primary term from Yoast setting.
+			'_primary_term_' . $taxonomy, // Autodescription primary term setting.
 		];
 
 		$cat_id = null;
 
-		// Try to get the primary term id from meta fields
+		// Try to get the primary term id from meta fields.
 		foreach ( $primary_meta_keys as $primary_meta_key ) {
 			$maybe_cat_id = get_post_meta( $post_id, $primary_meta_key, true );
 			if ( ! empty( $maybe_cat_id ) ) {
@@ -37,14 +37,14 @@ if ( ! function_exists( 'get_primary_term' ) ) {
 			}
 		}
 
-		// If primary set, try to get and return WP_Term object for it
+		// If primary set, try to get and return WP_Term object for it.
 		$term = ! empty( $cat_id ) ? get_term( $cat_id, $taxonomy ) : false;
 
 		if ( ! empty( $term ) && ! is_wp_error( $term ) ) {
 			return $term;
 		}
 
-		// No primary term, get all post terms and return first one
+		// No primary term, get all post terms and return first one.
 		$cats = wp_get_post_terms( $post_id, $taxonomy );
 
 		if ( ! empty( $cats ) && ! is_wp_error( $cats ) ) {
@@ -52,5 +52,5 @@ if ( ! function_exists( 'get_primary_term' ) ) {
 		}
 
 		return false;
-	} // end get_primary_term
-} // end if
+	}
+}

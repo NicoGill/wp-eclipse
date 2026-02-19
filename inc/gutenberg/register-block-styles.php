@@ -15,11 +15,11 @@ function register_block_styles() {
 
 	$block_styles = array(
 		'core/button' => array(
-			'minimal' => __( 'Minimal', 'wdsbt' ),
-			'text'    => __( 'Text Only', 'wdsbt' ),
+			'minimal' => __( 'Minimal', 'wp_eclipse' ),
+			'text'    => __( 'Text Only', 'wp_eclipse' ),
 		),
 		'core/quote'  => array(
-			'large' => __( 'Large', 'wdsbt' ),
+			'large' => __( 'Large', 'wp_eclipse' ),
 		),
 	);
 
