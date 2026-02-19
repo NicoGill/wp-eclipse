@@ -14,29 +14,22 @@ namespace NicoGill\wp_eclipse;
  */
 function scripts() {
 	$asset_file_path = get_template_directory() . '/build/js/main.asset.php';
-	$theme           = wp_get_theme( get_template() );
-	$theme_version   = $theme->get( 'Version' );
-
-	if ( empty( $theme_version ) ) {
-		$theme_version = '1.4.0';
-	}
 
 	if ( is_readable( $asset_file_path ) ) {
 		$asset_file = include $asset_file_path;
 	} else {
+		$theme           = wp_get_theme( get_template() );
+		$theme_version   = $theme->get( 'Version' );
+
 		$asset_file = array(
-			'dependencies' => array( 'wp-polyfill' ),
+			'version'     	=> $theme_version,
+			'dependencies' 	=> array( 'wp-polyfill' ),
 		);
 	}
 
-	$style_path  = get_template_directory() . '/build/css/style.css';
-	$script_path = get_template_directory() . '/build/js/index.js';
-	$style_ver   = file_exists( $style_path ) ? (string) filemtime( $style_path ) : $theme_version;
-	$script_ver  = file_exists( $script_path ) ? (string) filemtime( $script_path ) : $theme_version;
-
 	// Register styles & scripts.
-	wp_enqueue_style( 'wp_eclipse-styles', get_stylesheet_directory_uri() . '/build/css/theme.css', array(), $style_ver );
-	wp_enqueue_script( 'wp_eclipse-scripts', get_stylesheet_directory_uri() . '/build/js/main.js', $asset_file['dependencies'], $script_ver, true );
+	wp_enqueue_style( 'wp_eclipse-styles', get_stylesheet_directory_uri() . '/build/css/theme.css', array(), $asset_file['version'] );
+	wp_enqueue_script( 'wp_eclipse-scripts', get_stylesheet_directory_uri() . '/build/js/main.js', $asset_file['dependencies'], $asset_file['version'], true );
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
 

@@ -83,6 +83,10 @@ if (imageFiles.length) {
 	copyPatterns.push({
 		from: path.resolve(__dirname, 'assets/images'),
 		to: path.resolve(__dirname, 'build/images'),
+		globOptions: {
+			// Icon source files are compiled into the sprite and should not be copied as standalone files.
+			ignore: ['**/icons/**/*.svg'],
+		},
 	});
 }
 
@@ -185,6 +189,24 @@ module.exports = {
 										avif: {
 											quality: 50,
 										},
+									},
+								},
+							},
+						}),
+						new ImageMinimizerPlugin({
+							test: /\.svg$/i,
+							exclude: /images[\\/]icons[\\/]sprite\.svg$/i,
+							minimizer: {
+								implementation:
+									ImageMinimizerPlugin.svgoMinify,
+								options: {
+									encodeOptions: {
+										multipass: true,
+										plugins: [
+											{
+												name: 'preset-default',
+											},
+										],
 									},
 								},
 							},
