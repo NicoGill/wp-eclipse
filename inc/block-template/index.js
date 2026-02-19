@@ -17,6 +17,7 @@ module.exports = {
 		dashicon: 'pets',
 		description: 'A custom block created by the create-block for the theme',
 		namespace: 'wpeclipse',
+		textdomain: 'wp_eclipse',
 		editorScript: 'file:./index.js',
 		editorStyle: 'file:./index.css',
 		style: 'file:./style.css',

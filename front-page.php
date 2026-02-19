@@ -3,7 +3,7 @@
 /**
  * The template for displaying a static front page.
  *
- * @package NicoGill\wp_eclipse
+ * @package wp_eclipse
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#home-page-display
  */

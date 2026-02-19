@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package NicoGill\wp_eclipse
+ * @package wp_eclipse
  */
 
 namespace NicoGill\wp_eclipse;
