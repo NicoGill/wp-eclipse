@@ -5,7 +5,7 @@
 @use '@scss/abstracts/index' as *;
 
 .site-header {
-	padding-top: var(--padding-container-horizontal);
+	padding-top: var(--wp--style--root--padding-left);
 
 	&__inner {
 		@include wrap;

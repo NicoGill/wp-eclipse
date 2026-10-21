@@ -10,99 +10,55 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-const moveRtlCssAssetsPlugin = {
-	apply(compiler) {
-		compiler.hooks.thisCompilation.tap(
-			'MoveRtlCssAssetsPlugin',
-			(compilation) => {
-				const { Compilation } = compiler.webpack;
-
-				compilation.hooks.processAssets.tap(
-					{
-						name: 'MoveRtlCssAssetsPlugin',
-						stage: Compilation.PROCESS_ASSETS_STAGE_REPORT,
-					},
-					() => {
-						Object.keys(compilation.assets).forEach((assetName) => {
-							if (
-								!assetName.endsWith('-rtl.css') ||
-								assetName.startsWith('css/') ||
-								assetName.startsWith('blocks/')
-							) {
-								return;
-							}
-
-							const targetName = `css/${assetName}`;
-							const asset = compilation.getAsset(assetName);
-							compilation.emitAsset(targetName, asset.source);
-							compilation.deleteAsset(assetName);
-						});
-					}
-				);
-			}
-		);
-	},
-};
-
+// main.js imports main.scss: one entry emits js/main.js, css/main.css and js/main.asset.php.
 const entries = {
 	main: path.resolve(__dirname, 'assets/js/main.js'),
-	theme: path.resolve(__dirname, 'assets/scss/main.scss'),
 };
 
 globSync('blocks/*/index.js', { cwd: __dirname }).forEach((file) => {
-	const normalized = file.replace(/\\/g, '/');
-	const blockSlug = normalized
+	const blockSlug = file
+		.replace(/\\/g, '/')
 		.replace(/^blocks\//, '')
 		.replace(/\/index\.js$/, '');
 
 	entries[`blocks/${blockSlug}/index`] = path.resolve(__dirname, file);
 });
 
-const fontFiles = globSync('assets/fonts/**/*.{woff,woff2,ttf,otf,eot}', {
-	cwd: __dirname,
-});
-const imageFiles = globSync(
-	'assets/images/**/*.{jpg,jpeg,png,gif,svg,webp,avif}',
-	{
-		cwd: __dirname,
-	}
+// Sites are LTR only: drop the *-rtl.css twins wp-scripts would emit.
+const plugins = defaultConfig.plugins.filter(
+	(plugin) => plugin.constructor.name !== 'RtlCssPlugin'
 );
 
-const plugins = [...defaultConfig.plugins];
-const copyPatterns = [];
-
-if (fontFiles.length) {
-	copyPatterns.push({
-		from: path.resolve(__dirname, 'assets/fonts'),
-		to: path.resolve(__dirname, 'build/fonts'),
-	});
-}
-
-if (imageFiles.length) {
-	copyPatterns.push({
-		from: path.resolve(__dirname, 'assets/images'),
-		to: path.resolve(__dirname, 'build/images'),
-		globOptions: {
-			// Icon source files are compiled into the sprite and should not be copied as standalone files.
-			ignore: ['**/icons/**/*.svg'],
-		},
-	});
-}
-
-copyPatterns.push({
-	from: path.resolve(__dirname, 'blocks'),
-	to: path.resolve(__dirname, 'build/blocks'),
-	noErrorOnMissing: true,
-	globOptions: {
-		ignore: ['**/index.js', '**/*.scss'],
-	},
-});
-
-if (copyPatterns.length) {
-	plugins.push(new CopyWebpackPlugin({ patterns: copyPatterns }));
-}
+// Keep block assets near block.json for WordPress block metadata resolution.
+const cssPlugin = plugins.find(
+	(plugin) => plugin.constructor.name === 'MiniCssExtractPlugin'
+);
+cssPlugin.options.filename = (pathData) =>
+	pathData.chunk.name.startsWith('blocks/') ? '[name].css' : 'css/[name].css';
+cssPlugin.options.chunkFilename = '[id].css';
 
 plugins.push(
+	new CopyWebpackPlugin({
+		patterns: [
+			{
+				from: path.resolve(__dirname, 'assets/images'),
+				to: path.resolve(__dirname, 'build/images'),
+				noErrorOnMissing: true,
+				globOptions: {
+					// Icon source files are compiled into the sprite, not copied as standalone files.
+					ignore: ['**/icons/**/*.svg'],
+				},
+			},
+			{
+				from: path.resolve(__dirname, 'blocks'),
+				to: path.resolve(__dirname, 'build/blocks'),
+				noErrorOnMissing: true,
+				globOptions: {
+					ignore: ['**/index.js', '**/*.scss'],
+				},
+			},
+		],
+	}),
 	new SVGSpritemapPlugin('assets/images/icons/*.svg', {
 		output: {
 			filename: 'images/icons/sprite.svg',
@@ -113,7 +69,6 @@ plugins.push(
 		},
 	})
 );
-plugins.push(moveRtlCssAssetsPlugin);
 
 if (!isProduction) {
 	plugins.push(
@@ -135,32 +90,15 @@ if (!isProduction) {
 	);
 }
 
-// Keep block assets near block.json for WordPress block metadata resolution.
-const jsOutputFilename = (pathData) => {
-	const name = pathData.chunk?.name || '';
-	return name.startsWith('blocks/') ? '[name].js' : 'js/[name].js';
-};
-
-plugins.forEach((plugin) => {
-	if (plugin?.constructor?.name === 'MiniCssExtractPlugin') {
-		plugin.options.filename = (pathData) => {
-			const name = pathData.chunk?.name || '';
-			return name.startsWith('blocks/') ? '[name].css' : 'css/[name].css';
-		};
-		plugin.options.chunkFilename = '[id].css';
-	}
-
-	if (plugin?.constructor?.name === 'RtlCssPlugin') {
-		return;
-	}
-});
-
 module.exports = {
 	...defaultConfig,
 	entry: entries,
 	output: {
 		path: path.resolve(__dirname, 'build'),
-		filename: jsOutputFilename,
+		filename: (pathData) =>
+			pathData.chunk.name.startsWith('blocks/')
+				? '[name].js'
+				: 'js/[name].js',
 		clean: true,
 	},
 	optimization: {
@@ -176,18 +114,10 @@ module.exports = {
 									ImageMinimizerPlugin.sharpMinify,
 								options: {
 									encodeOptions: {
-										jpeg: {
-											quality: 75,
-										},
-										png: {
-											quality: 80,
-										},
-										webp: {
-											quality: 75,
-										},
-										avif: {
-											quality: 50,
-										},
+										jpeg: { quality: 75 },
+										png: { quality: 80 },
+										webp: { quality: 75 },
+										avif: { quality: 50 },
 									},
 								},
 							},
@@ -196,16 +126,11 @@ module.exports = {
 							test: /\.svg$/i,
 							exclude: /images[\\/]icons[\\/]sprite\.svg$/i,
 							minimizer: {
-								implementation:
-									ImageMinimizerPlugin.svgoMinify,
+								implementation: ImageMinimizerPlugin.svgoMinify,
 								options: {
 									encodeOptions: {
 										multipass: true,
-										plugins: [
-											{
-												name: 'preset-default',
-											},
-										],
+										plugins: [{ name: 'preset-default' }],
 									},
 								},
 							},

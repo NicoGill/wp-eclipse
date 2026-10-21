@@ -1,3 +1,5 @@
+import '../scss/main.scss';
+
 import initDropdownMenus from './modules/dropdown-menu';
 import initMobileMenu from './modules/mobile-menu';
 

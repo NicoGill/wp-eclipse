@@ -1,6 +1,6 @@
 {
+	"$schema": "https://schemas.wp.org/wp/6.9/theme.json",
 	"version": 3,
-	"$schema": "https://schemas.wp.org/wp/6.7/theme.json",
 	"settings": {
 		"color": {
 			"custom": false,
@@ -9,14 +9,29 @@
 			"defaultPalette": false,
 			"palette": [
 				{
-					"color": "#000000",
-					"name": "Black",
-					"slug": "black"
+					"slug": "primary",
+					"name": "Primary",
+					"color": "#1c1c1e"
 				},
 				{
-					"color": "#FFFFFF",
+					"slug": "text",
+					"name": "Text",
+					"color": "#868686"
+				},
+				{
+					"slug": "light-gray",
+					"name": "Light gray",
+					"color": "#d9d9d9"
+				},
+				{
+					"slug": "black",
+					"name": "Black",
+					"color": "#000000"
+				},
+				{
+					"slug": "white",
 					"name": "White",
-					"slug": "white"
+					"color": "#ffffff"
 				}
 			]
 		},
@@ -41,14 +56,156 @@
 				"unit": "rem"
 			},
 			"units": ["%", "px", "em", "rem", "vh", "vw"]
-		}
+		},
+		"typography": {
+			"defaultFontSizes": false,
+			"fluid": {
+				"minViewportWidth": "890px",
+				"maxViewportWidth": "1920px"
+			},
+			"fontFamilies": [
+				{
+					"slug": "space-mono",
+					"name": "Space Mono",
+					"fontFamily": "'Space Mono', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Space Mono",
+							"fontWeight": "400",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/spacemono-400.woff2"]
+						},
+						{
+							"fontFamily": "Space Mono",
+							"fontWeight": "400",
+							"fontStyle": "italic",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/spacemono-400i.woff2"]
+						},
+						{
+							"fontFamily": "Space Mono",
+							"fontWeight": "700",
+							"fontStyle": "normal",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/spacemono-700.woff2"]
+						},
+						{
+							"fontFamily": "Space Mono",
+							"fontWeight": "700",
+							"fontStyle": "italic",
+							"fontDisplay": "swap",
+							"src": ["file:./assets/fonts/spacemono-700i.woff2"]
+						}
+					]
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "small",
+					"name": "Small",
+					"size": "0.875rem",
+					"fluid": false
+				},
+				{
+					"slug": "medium",
+					"name": "Medium",
+					"size": "1rem",
+					"fluid": false
+				},
+				{
+					"slug": "large",
+					"name": "Large",
+					"size": "1.25rem",
+					"fluid": { "min": "1.063rem", "max": "1.25rem" }
+				},
+				{
+					"slug": "x-large",
+					"name": "Extra large",
+					"size": "1.875rem",
+					"fluid": { "min": "1.125rem", "max": "1.875rem" }
+				},
+				{
+					"slug": "xx-large",
+					"name": "2X large",
+					"size": "2.5rem",
+					"fluid": { "min": "1.5rem", "max": "2.5rem" }
+				},
+				{
+					"slug": "xxx-large",
+					"name": "3X large",
+					"size": "3.125rem",
+					"fluid": { "min": "1.5rem", "max": "3.125rem" }
+				},
+				{
+					"slug": "huge",
+					"name": "Huge",
+					"size": "4.375rem",
+					"fluid": { "min": "1.875rem", "max": "4.375rem" }
+				}
+			]
+		},
+		"useRootPaddingAwareAlignments": true
 	},
 	"styles": {
+		"color": {
+			"text": "var:preset|color|text"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|space-mono",
+			"fontSize": "var:preset|font-size|medium",
+			"lineHeight": "1.25"
+		},
+		"spacing": {
+			"blockGap": "1.875rem",
+			"padding": {
+				"left": "1.125rem",
+				"right": "1.125rem"
+			}
+		},
 		"elements": {
+			"heading": {
+				"color": {
+					"text": "var:preset|color|primary"
+				},
+				"typography": {
+					"lineHeight": "1.15"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontSize": "var:preset|font-size|huge"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "var:preset|font-size|xx-large"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "var:preset|font-size|x-large"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontSize": "var:preset|font-size|large"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontSize": "var:preset|font-size|medium"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontSize": "var:preset|font-size|small"
+				}
+			},
 			"button": {
 				"color": {
-					"text": "#ffffff",
-					"background": "#000000"
+					"background": "var:preset|color|black",
+					"text": "var:preset|color|white"
 				}
 			}
 		}

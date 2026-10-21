@@ -78,7 +78,7 @@ function setup() {
 	add_theme_support( 'align-wide' );
 	add_theme_support( 'editor-styles' );
 	add_theme_support( 'wp-block-styles' );
-	add_editor_style( 'build/css/theme.css' );
+	add_editor_style( 'build/css/main.css' );
 
 	// Keep templates managed by PHP in this classic theme.
 	remove_theme_support( 'block-templates' );

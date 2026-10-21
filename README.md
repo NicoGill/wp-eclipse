@@ -18,7 +18,8 @@ and [air-light](https://github.com/digitoimistodude/air-light).
 
 - JavaScript/Build: `@wordpress/scripts` (Webpack-based build pipeline for WordPress themes/blocks)
 - Dev server: `BrowserSync` via `browser-sync-webpack-plugin` (live reload/proxy workflow)
-- Frontend assets: `Sass` + `stylelint` (`stylelint-config-standard-scss`), SVG spritemap generation (`svg-spritemap-webpack-plugin`), image optimization (`image-minimizer-webpack-plugin` + `sharp`)
+- Design tokens: `theme.json` is the single source (palette, fluid font sizes, font family and `@font-face`, block gap, root padding); SCSS consumes them through `--wp--preset--*` / `--wp--style--*` custom properties and the aliases in `assets/scss/abstracts/_variables.scss`
+- Frontend assets: `Sass` + `stylelint` (`@wordpress/stylelint-config`), SVG spritemap generation (`svg-spritemap-webpack-plugin`), image optimization (`image-minimizer-webpack-plugin` + `sharp`)
 - JavaScript linting/formatting: tooling provided by `@wordpress/scripts` (ESLint + formatting commands)
 - WordPress/PHP quality: `PHP_CodeSniffer` with `WordPress Coding Standards (WPCS)` and `PHPCompatibilityWP`
 - WordPress CLI: `wp-cli/wp-cli-bundle` (including POT generation via `wp i18n make-pot`)
@@ -99,7 +100,8 @@ Command | Action
 
 ## Blocks
 
-- Source of truth is `/blocks/*` and `/assets/*`.
+- Source of truth is `/blocks/*`, `/assets/*` and `theme.json`.
+- `assets/js/main.js` imports `assets/scss/main.scss`: the build emits `build/js/main.js`, `build/css/main.css` and the icon sprite. Fonts stay in `assets/fonts` and are declared in `theme.json`.
 - Compiled files are written to `/build` via `@wordpress/scripts`.
 - Blocks are auto-registered from `/build/blocks` on WordPress `init`.
 - ACF Pro blocks are supported via `block.json` (`acf.renderTemplate`).
