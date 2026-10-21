@@ -53,5 +53,20 @@
 	"engines": {
 		"node": ">=22.13.0",
 		"npm": ">=8.19.2"
+	},
+	"overrides": {
+		"postcss-selector-parser": "^7.1.7",
+		"qs": "^6.16.1",
+		"serialize-javascript": "^7.1.2",
+		"markdownlint": {
+			"markdown-it": "^14.3.3"
+		},
+		"markdown-it": {
+			"linkify-it": "^5.0.2"
+		},
+		"sockjs": {
+			"uuid": "^11.1.1"
+		},
+		"minimatch@3": "^3.1.5"
 	}
 }
