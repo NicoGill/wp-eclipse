@@ -20,7 +20,7 @@ function print_post_date( $args = [] ) {
 
 	// Set defaults.
 	$defaults = [
-		'date_text'   => esc_html__( 'Posté le', 'wp_eclipse' ),
+		'date_text'   => esc_html__( 'Posté le', 'wp-eclipse' ),
 		'date_format' => get_option( 'date_format' ),
 	];
 

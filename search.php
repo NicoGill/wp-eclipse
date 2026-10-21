@@ -20,7 +20,7 @@ get_header();
 		<h1 class="page-title">
 			<?php
 			/* translators: %s: search query. */
-			printf( esc_html__( 'Résultats de recherche pour: %s', 'wp_eclipse' ), '<span>' . get_search_query() . '</span>' );
+			printf( esc_html__( 'Résultats de recherche pour: %s', 'wp-eclipse' ), '<span>' . get_search_query() . '</span>' );
 			?>
 		</h1>
 	</header>
@@ -37,7 +37,7 @@ get_header();
 	else :
 		?>
 
-		<p><?php esc_html_e( 'Rien ne correspond à votre recherche.', 'wp_eclipse' ); ?></p>
+		<p><?php esc_html_e( 'Rien ne correspond à votre recherche.', 'wp-eclipse' ); ?></p>
 
 	<?php endif; ?>
 </main>

@@ -8,7 +8,7 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * Custom PHP mailer on .test domain
+ * Custom PHP mailer (Mailpit) in local environment
  *
  * @param $phpmailer
  *
@@ -16,11 +16,7 @@ namespace NicoGill\wp_eclipse;
  */
 function phpmailer_init_dev( $phpmailer ) {
 
-	if ( ! isset( $_SERVER['HTTP_HOST'] ) ) {
-		return;
-	}
-
-	if ( 'eclipse.test' !== $_SERVER['HTTP_HOST'] ) {
+	if ( 'local' !== wp_get_environment_type() ) {
 		return;
 	}
 

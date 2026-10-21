@@ -1,5 +1,5 @@
 {
-	"name": "nicogill/eclipse",
+	"name": "nicogill/wp-eclipse",
 	"description": "WordPress development starter hybrid theme by (and mostly for) Nicolas Gillium.",
 	"type": "wordpress-theme",
 	"license": "GPL-2.0-or-later",
@@ -36,6 +36,6 @@
 		"format": "phpcbf --report=summary,source",
 		"lint": "phpcs --report=code",
 		"report": "phpcs  --report=full,source",
-		"pot": "wp i18n make-pot . build/languages/wp_eclipse.pot --exclude=node_modules,vendor,build --allow-root"
+		"pot": "wp i18n make-pot . build/languages/wp-eclipse.pot --exclude=node_modules,vendor,build --allow-root"
 	}
 }

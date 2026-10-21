@@ -35,6 +35,7 @@
 	},
 	"scripts": {
 		"build": "wp-scripts build",
+		"rename": "node bin/rename.js",
 		"create:block": "npm run create:block:run -- --variant dynamic",
 		"create:block:acf": "npm run create:block:run -- --variant acf",
 		"create:block:run": "cd blocks && create-block --template ../inc/block-template --no-plugin",

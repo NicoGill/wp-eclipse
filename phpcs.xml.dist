@@ -73,7 +73,6 @@
 			<property name="prefixes" type="array">
 				<element value="NicoGill\wp_eclipse"/>
 				<element value="wp_eclipse"/>
-				<element value="eclipse"/>
 			</property>
 		</properties>
 	</rule>
@@ -82,7 +81,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="wp_eclipse"/>
+				<element value="wp-eclipse"/>
 			</property>
 		</properties>
 	</rule>

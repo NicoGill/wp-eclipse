@@ -43,7 +43,7 @@ function print_numeric_pagination( ?WP_Query $query = null, array $args = [] ): 
 	?>
 
 	<div class="is-layout-constrained has-global-padding">
-		<nav class="pagination-container" aria-label="<?php esc_attr_e( 'numeric pagination', 'wp_eclipse' ); ?>">
+		<nav class="pagination-container" aria-label="<?php esc_attr_e( 'numeric pagination', 'wp-eclipse' ); ?>">
 			<?php echo paginate_links( $args ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- XSS OK. ?>
 		</nav>
 	</div>

@@ -19,12 +19,12 @@ namespace NicoGill\wp_eclipse;
 function get_svg( $args = [] ) {
 	// Make sure $args are an array.
 	if ( empty( $args ) ) {
-		return esc_attr__( 'Please define default parameters in the form of an array.', 'wp_eclipse' );
+		return esc_attr__( 'Please define default parameters in the form of an array.', 'wp-eclipse' );
 	}
 
 	// Define an icon.
 	if ( false === array_key_exists( 'icon', $args ) ) {
-		return esc_attr__( 'Please define an SVG icon filename.', 'wp_eclipse' );
+		return esc_attr__( 'Please define an SVG icon filename.', 'wp-eclipse' );
 	}
 
 	// Set defaults.

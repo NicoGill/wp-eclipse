@@ -16,8 +16,8 @@ namespace NicoGill\wp_eclipse;
  */
 function register_wp_eclipse_category( $categories ) {
 	$custom_block_category = array(
-		'slug'  => __( 'wp_eclipse-blocks', 'wp_eclipse' ),
-		'title' => __( 'WP Eclipse Blocks', 'wp_eclipse' ),
+		'slug'  => 'wp-eclipse-blocks',
+		'title' => __( 'Eclipse Blocks', 'wp-eclipse' ),
 	);
 
 	$categories_sorted    = array();

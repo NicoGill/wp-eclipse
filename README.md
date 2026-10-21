@@ -57,32 +57,25 @@ composer install
 
 ### Rename This Theme
 
-Clone this repository, rename the theme folder, then run a case-sensitive find/replace across the codebase (same approach as `_s`).
+Clone this repository, then run:
 
-Use these placeholders:
+```bash
+npm run rename -- --slug acme-studio --vendor Acme --name "Acme Studio" --domain acme-studio.test
+```
 
-- `your-theme-slug` (kebab-case, example: `acme-studio`)
-- `your_theme_slug` (snake_case, example: `acme_studio`)
-- `YourVendor` (PHP vendor/namespace root, example: `Acme`)
+Only `--slug` is required (kebab-case). Defaults: `--vendor` keeps `NicoGill`, `--name` is the title-cased slug, `--domain` is `<slug>.test`. Add `--dry-run` to list the files without writing.
 
-Recommended replacement steps:
+Every identifier derives from those four tokens:
 
-1. Search for `'wp_eclipse'` and replace with `'your_theme_slug'` (text domain in PHP strings).
-2. Search for `wp_eclipse_` and replace with `your_theme_slug_` (prefixed PHP functions, if any).
-3. Search for `wp_eclipse-` and replace with `your_theme_slug-` (script/style handles, if any).
-4. Search for `NicoGill\\wp_eclipse` and replace with `YourVendor\\your_theme_slug` (PHP namespace).
-5. Search for `NicoGill\\eclipse\\` and replace with `YourVendor\\your_theme_slug\\` (constant namespace in `functions.php`).
-6. Search for `wp-eclipse` and replace with `your-theme-slug` (npm package name, block namespace default, repository URL).
-7. Search for `nicogill/eclipse` and replace with `yourvendor/your-theme-slug` (Composer package name).
-8. Search for `eclipse.test` and replace with your local domain (example: `acme-studio.test`) in development-only files (`webpack.config.js`, `inc/hooks/dev-only.php`).
-9. Search for `Text Domain: wp_eclipse` in `style.css` and replace with `Text Domain: your_theme_slug` (or your final text domain convention).
+| Token | Drives |
+|:-|:-|
+| `wp-eclipse` (slug) | theme folder, text domain, style/script handles, npm name, block namespace, block category slug, Composer name |
+| `wp_eclipse` (slug in snake_case, derived) | PHP namespace tail, `@package`, hook prefix |
+| `NicoGill` (vendor) | PHP namespace root (`NicoGill\wp_eclipse`), lowercase in Composer name |
+| `Eclipse` (name) | `Theme Name` in `style.css`, block category title |
+| `eclipse.test` (domain) | BrowserSync proxy in `webpack.config.js` |
 
-Then update:
-
-- `style.css` theme header fields (Theme Name, URI, Author, Text Domain, Tags).
-- Translation filename (for example `build/languages/wp_eclipse.pot` to your own slug).
-- Project metadata in `package.json` and `composer.json`.
-- This README.
+Then rename the theme folder to the new slug, activate it (`wp theme activate <slug>`), and review `style.css` header fields, `package.json` / `composer.json` metadata and this README.
 
 ## Development
 
@@ -90,6 +83,7 @@ Command | Action
 :- | :-
 `npm run start` | Builds assets and starts Live Reload and Browsersync servers
 `npm run build` | Builds production-ready assets for a deployment
+`npm run rename` | Renames every theme identifier for a new project (see above)
 `npm run create:block` | Runs an interactive prompt to scaffold a dynamic Gutenberg block (with `render.php`) in `/blocks`
 `npm run create:block:acf` | Runs an interactive prompt to scaffold an ACF-compatible block in `/blocks`
 `npm run lint:js` | Runs JavaScript linting

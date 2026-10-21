@@ -51,7 +51,7 @@ function print_edit_link(): void {
 
 	<div class="edit-link">
 		<a href="<?php echo esc_url( $edit_link ); ?>">
-				<?php esc_html_e( 'Modifier', 'wp_eclipse' ); ?>
+				<?php esc_html_e( 'Modifier', 'wp-eclipse' ); ?>
 			</a>
 		</div>
 	<?php

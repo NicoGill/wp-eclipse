@@ -16,10 +16,10 @@ namespace NicoGill\wp_eclipse;
 	</span>
 
 	<span class="menu-toggle__label-open">
-		<?php esc_html_e( 'Ouvrir le menu', 'wp_eclipse' ); ?>
+		<?php esc_html_e( 'Ouvrir le menu', 'wp-eclipse' ); ?>
 	</span>
 
 	<span class="menu-toggle__label-close">
-		<?php esc_html_e( 'Fermer le menu', 'wp_eclipse' ); ?>
+		<?php esc_html_e( 'Fermer le menu', 'wp-eclipse' ); ?>
 	</span>
 </button>

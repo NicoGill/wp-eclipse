@@ -26,7 +26,7 @@ namespace NicoGill\wp_eclipse;
 	</div>
 	<footer>
 		<a href="<?php the_permalink(); ?>" rel="bookmark">
-			<?php esc_html_e( 'En savoir plus', 'wp_eclipse' ); ?>
+			<?php esc_html_e( 'En savoir plus', 'wp-eclipse' ); ?>
 		</a>
 	</footer>
 </article>

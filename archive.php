@@ -38,7 +38,7 @@ get_header();
 	else :
 		?>
 
-		<p><?php esc_html_e( 'Il n\'y a pas de contenu à afficher.', 'wp_eclipse' ); ?></p>
+		<p><?php esc_html_e( 'Il n\'y a pas de contenu à afficher.', 'wp-eclipse' ); ?></p>
 
 	<?php endif; ?>
 </main>

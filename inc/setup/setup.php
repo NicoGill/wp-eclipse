@@ -24,7 +24,7 @@ function setup() {
 	 * README.md file in this theme to find and replace all
 	 * references of wd_s
 	 */
-	load_theme_textdomain( 'wp_eclipse', get_template_directory() . '/build/languages' );
+	load_theme_textdomain( 'wp-eclipse', get_template_directory() . '/build/languages' );
 
 	// Add default posts and comments RSS feed links to head.
 	add_theme_support( 'automatic-feed-links' );
@@ -59,9 +59,9 @@ function setup() {
 	// Register navigation menus.
 	register_nav_menus(
 		array(
-			'primary'  => esc_html__( 'Menu principal', 'wp_eclipse' ),
-			'socials'  => esc_html__( 'Menu des réseaux sociaux', 'wp_eclipse' ),
-			'footer-1' => esc_html__( 'Menu du pied de page colonne 1', 'wp_eclipse' ),
+			'primary'  => esc_html__( 'Menu principal', 'wp-eclipse' ),
+			'socials'  => esc_html__( 'Menu des réseaux sociaux', 'wp-eclipse' ),
+			'footer-1' => esc_html__( 'Menu du pied de page colonne 1', 'wp-eclipse' ),
 			// etc.
 		)
 	);

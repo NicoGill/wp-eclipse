@@ -64,8 +64,8 @@ if ( function_exists( 'acf_add_options_page' ) ) {
 	function add_options_pages() {
 		acf_add_options_page(
 			array(
-				'page_title' => __( 'Paramètres du thème', 'wp_eclipse' ),
-				'menu_title' => __( 'Paramètres', 'wp_eclipse' ),
+				'page_title' => __( 'Paramètres du thème', 'wp-eclipse' ),
+				'menu_title' => __( 'Paramètres', 'wp-eclipse' ),
 				'menu_slug'  => 'theme-settings',
 				'capability' => 'edit_posts',
 				'redirect'   => false,

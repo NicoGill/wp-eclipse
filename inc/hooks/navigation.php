@@ -46,8 +46,8 @@ add_filter(
 								'class' => [ 'menu-item__caret__icon', 'menu-item__caret__icon--mobile', 'menu-item__caret__icon--close' ],
 							]
 						) .
-						'<span class="menu-item__caret__text-open">' . esc_html__( 'Ouvrir le sous-menu', 'wp_eclipse' ) . '</span>' .
-						'<span class="menu-item__caret__text-close">' . esc_html__( 'Fermer le sous-menu', 'wp_eclipse' ) . '</span>' .
+						'<span class="menu-item__caret__text-open">' . esc_html__( 'Ouvrir le sous-menu', 'wp-eclipse' ) . '</span>' .
+						'<span class="menu-item__caret__text-close">' . esc_html__( 'Fermer le sous-menu', 'wp-eclipse' ) . '</span>' .
 						'</button>';
 				}
 			}

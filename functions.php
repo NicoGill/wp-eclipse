@@ -9,10 +9,6 @@
 
 namespace NicoGill\wp_eclipse;
 
-// Define a global path and url.
-define( 'NicoGill\eclipse\ROOT_PATH', trailingslashit( get_template_directory() ) );
-define( 'NicoGill\eclipse\ROOT_URL', trailingslashit( get_template_directory_uri() ) );
-
 /**
  * Get all the include files for the theme.
  *
