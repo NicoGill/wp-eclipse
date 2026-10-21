@@ -15,9 +15,11 @@
 
 // reset first and last children margins
 @mixin child-margin-reset {
+
 	> :first-child {
 		margin-top: 0;
 	}
+
 	> :last-child {
 		margin-bottom: 0;
 	}
@@ -77,7 +79,6 @@
 
 @mixin visuallyhidden {
 	border: 0;
-	clip: rect( 1px, 1px, 1px, 1px );
 	clip-path: inset( 50% );
 	height: 1px;
 	margin: -1px;
@@ -85,7 +86,7 @@
 	padding: 0;
 	position: absolute;
 	width: 1px;
-	word-wrap: normal;
+	overflow-wrap: normal;
 }
 
 /* Responsive
@@ -93,6 +94,7 @@
 
 // Mobile-first
 @mixin respond($breakpoint) {
+
 	@media (min-width: $breakpoint) {
 		@content;
 	}
@@ -100,6 +102,7 @@
 
 // Max-width
 @mixin respond-max($breakpoint) {
+
 	@media (max-width: $breakpoint) {
 		@content;
 	}
@@ -107,6 +110,7 @@
 
 // Between
 @mixin respond-between($min, $max) {
+
 	@media (min-width: $min) and (max-width: $max) {
 		@content;
 	}

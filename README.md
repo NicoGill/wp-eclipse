@@ -22,8 +22,7 @@ and [air-light](https://github.com/digitoimistodude/air-light).
 - Frontend assets: `Sass` + `stylelint` (`@wordpress/stylelint-config`), SVG spritemap generation (`svg-spritemap-webpack-plugin`), image optimization (`image-minimizer-webpack-plugin` + `sharp`)
 - JavaScript linting/formatting: tooling provided by `@wordpress/scripts` (ESLint + formatting commands)
 - WordPress/PHP quality: `PHP_CodeSniffer` with `WordPress Coding Standards (WPCS)` and `PHPCompatibilityWP`
-- WordPress CLI: `wp-cli/wp-cli-bundle` (including POT generation via `wp i18n make-pot`)
-- ACF development support: `php-stubs/acf-pro-stubs` for static analysis/autocomplete
+- Translations: `wp-cli/i18n-command` (POT generation via `wp i18n make-pot` into `languages/`)
 
 ## `inc/` Directory Structure
 
@@ -42,7 +41,7 @@ Note: `inc/post-types/`, `inc/taxonomies/`, and `inc/shortcodes/` are scaffold d
 
 ## Requirements
 
-- Node.js `>= 18.12.0`
+- Node.js `>= 22.13.0` (see `.nvmrc`)
 - npm `>= 8.19.2`
 - Composer `>= 2.9`
 
@@ -87,16 +86,13 @@ Command | Action
 `npm run rename` | Renames every theme identifier for a new project (see above)
 `npm run create:block` | Runs an interactive prompt to scaffold a dynamic Gutenberg block (with `render.php`) in `/blocks`
 `npm run create:block:acf` | Runs an interactive prompt to scaffold an ACF-compatible block in `/blocks`
-`npm run lint:js` | Runs JavaScript linting
-`npm run lint:js:fix` | Runs JavaScript linting with auto-fix
-`npm run lint:css` | Runs SCSS linting
-`npm run lint:css:fix` | Runs SCSS linting with auto-fix
-`npm run lint:style` | Runs stylelint on `/assets` and `/blocks`
-`npm run lint:style:fix` | Runs stylelint with auto-fix on `/assets` and `/blocks`
-`composer run format` | Runs PHP Code Beautifier and Fixer (`phpcbf`)
-`composer run lint` | Runs PHP_CodeSniffer checks (`phpcs`)
-`composer run report` | Runs a full PHP_CodeSniffer report
-`composer run pot` | Generates/updates the POT file for translations
+`npm run lint` | Runs every linter: SCSS, JavaScript and PHP (WordPress Coding Standards)
+`npm run lint:css` / `lint:css:fix` | stylelint on SCSS (`@wordpress/stylelint-config`)
+`npm run lint:js` / `lint:js:fix` | ESLint on JavaScript (`@wordpress/eslint-plugin`, flat config in `eslint.config.js`)
+`npm run lint:php` / `lint:php:fix` | PHP_CodeSniffer with WPCS and PHPCompatibilityWP (`phpcs` / `phpcbf`, same as `composer run lint` / `format`)
+`npm run format` | Prettier on JavaScript, SCSS and JSON
+`composer run report` | Full PHP_CodeSniffer report with sniff sources
+`composer run pot` | Generates/updates `languages/wp-eclipse.pot`
 
 ## Blocks
 

@@ -18,36 +18,32 @@
 	/* Both navigations
 	----------------------------------------------- */
 
-	&, ul {
+	&,
+	ul {
+
 		@include list-reset;
-	}
-
-	li {
-
-		// call to action
-		&.cta {
-			& > span > a {
-				// TODO: button mixin
-			}
-		}
-
 	}
 
 	.menu-item__caret__text-open,
 	.menu-item__caret__text-close {
+
 		@include visuallyhidden;
 	}
+
 	.menu-item__caret__text-open {
 		display: block;
 	}
+
 	.menu-item__caret__text-close {
 		display: none;
 	}
 
 	[aria-expanded="true"] > span > .menu-item__caret {
+
 		.menu-item__caret__text-open {
 			display: none;
 		}
+
 		.menu-item__caret__text-close {
 			display: block;
 		}
@@ -59,6 +55,7 @@
 	@include respond-max($breakpoint-mobile-menu) {
 		display: block;
 		padding-top: 2rem;
+
 		.desktop-menu & {
 			display: none;
 		}
@@ -75,7 +72,7 @@
 				outline-offset: 0;
 			}
 
-			& > span {
+			> span {
 				align-items: center;
 				display: flex;
 				min-height: 2rem;
@@ -83,19 +80,23 @@
 
 			&.current-menu-item,
 			&.current-menu-ancestor {
-				& > span > a {
+
+				> span > a {
 					font-weight: var(--font-weight-bold);
 				}
 			}
 
 			// call to action
 			&.cta {
+
 				&:last-of-type {
 					margin-top: 1rem;
 				}
-				& > span > a {
+
+				> span > a {
 					display: block;
 					text-align: center;
+
 					svg {
 						margin-right: .25rem;
 						position: relative;
@@ -106,7 +107,8 @@
 
 			&.menu-item-has-children {
 				position: relative;
-				& > span {
+
+				> span {
 					align-items: center;
 					display: flex;
 					width: 100%;
@@ -120,31 +122,41 @@
 			color: var(--color-primary);
 			flex-shrink: 0;
 			margin-left: 1rem;
+
 			@include button-reset;
+
 			&__icon {
 				height: 2rem;
 				width: 2rem;
+
 				@include transition;
+
 				&--desktop {
 					display: none;
 				}
+
 				&--mobile {
 					display: block;
 				}
+
 				&--close {
 					display: none;
 				}
+
 				&--open {
 					display: block;
 				}
 			}
 		}
+
 		[aria-expanded="true"] > span > .menu-item__caret {
 
 			.menu-item__caret__icon {
+
 				&--close {
 					display: block;
 				}
+
 				&--open {
 					display: none;
 				}
@@ -155,6 +167,7 @@
 		.sub-menu {
 			display: none;
 			padding: .75rem 0 .75rem .75rem;
+
 			&[aria-hidden="false"] {
 				display: block;
 				animation: mobile-submenu-in .25s ease-in-out;
@@ -163,6 +176,7 @@
 			// all lower <li>
 			li {
 				padding: .5rem 0;
+
 				&:last-of-type {
 					padding-bottom: 0;
 				}
@@ -171,17 +185,17 @@
 		}
 
 		// 1st level <li>
-		& > li {
+		> li {
 
 			padding: .75rem 0;
 
 			// 1st level <a>
-			& > span > a {
+			> span > a {
 				font-size: 1.125rem;
 			}
 
 			// 2nd level <ul class="sub-menu"> [closed]
-			& > ul {
+			> ul {
 				max-height: 0;
 				background: var(--color-white);
 				opacity: 0;
@@ -193,13 +207,10 @@
 				}
 
 				// 2nd level <li>
-				& > li {
-
-					// 2nd level <a>
-					& > span > a {}
+				> li {
 
 					// 3rd level <ul class="sub-menu"> [closed]
-					& > ul {
+					> ul {
 						max-height: 0;
 						opacity: 0;
 
@@ -230,14 +241,17 @@
 
 		// all <li>
 		li {
-			& > span {
+
+			> span {
 				width: 100%;
 				display: flex;
 				align-items: center;
 			}
+
 			&.current-menu-item,
 			&.current-menu-ancestor {
-				& > span > a {
+
+				> span > a {
 					font-weight: var(--font-weight-bold);
 				}
 			}
@@ -252,10 +266,13 @@
 
 		// all carets
 		.menu-item__caret {
+
 			@include button-reset;
 			margin-left: .125em;
 			flex-shrink: 0;
+
 			&__icon {
+
 				&--mobile {
 					display: none;
 				}
@@ -268,29 +285,33 @@
 			height: 1em;
 			top: -.125rem;
 			position: relative;
+
 			&.icon-from-class {
 				margin-right: .25em;
 				width: 1.25em;
 				height: 1.25em;
 			}
 		}
+
 		.after-icon .icon {
 			margin-left: .25em;
 			margin-right: 0;
 		}
 
 		// 1st level <li>
-		& > li {
+		> li {
 			position: relative;
 			margin-right: 1.5rem;
+
 			&:last-of-type {
 				margin-right: 0;
 			}
 
 			// 1st level <a>
-			& > span > a {
+			> span > a {
 
 				font-size: 1rem;
+
 				@include respond($breakpoint-l) {
 					font-size: 1.125rem;
 				}
@@ -304,21 +325,26 @@
 			// all dropdown <li>
 			li {
 				background: var(--color-menu-dropdown-bg);
+
 				&:first-of-type {
 					margin-top: .5rem;
 				}
+
 				&:last-of-type {
 					margin-bottom: .5rem;
 				}
-				& > span > a {
+
+				> span > a {
 					color: var(--color-menu-dropdown-text);
 					padding: .5rem 1.5rem;
 					font-size: .875rem;
 					display: block;
 				}
+
 				&:hover, &:focus, &:active {
 					background: var(--color-menu-dropdown-bg-hover);
 				}
+
 				.icon {
 					color: var(--color-menu-dropdown-text);
 					transform: rotate(-90deg);
@@ -327,22 +353,24 @@
 
 			// 2nd level <ul class="sub-menu"> [open]
 			&:hover > .sub-menu,
-			& > .sub-menu[aria-hidden="false"] {
+			> .sub-menu[aria-hidden="false"] {
 				display: block;
 				opacity: 1;
 				left: 50%;
 				animation: main-submenu-in .25s ease-in-out;
+
 				&.is-out-of-bounds {
 					left: auto;
 					right: 0;
-					&:before {
+
+					&::before {
 						left: calc(75% - .2rem);
 					}
 				}
 			}
 
 			// 2nd level <ul class="sub-menu"> [closed]
-			& > .sub-menu {
+			> .sub-menu {
 				display: none;
 				color: var(--color-white);
 				width: var(--width-menu-dropdown);
@@ -360,7 +388,7 @@
 				}
 
 				// 2nd level caret
-				&:before {
+				&::before {
 					content: '';
 					width: 0;
 					height: 0;
@@ -370,18 +398,18 @@
 					position: absolute;
 					top: -.4rem;
 					left: calc(50% - .2rem);
-					filter: drop-shadow(0px -2px 3px rgba(0,0,0,.1));
+					filter: drop-shadow(0 -2px 3px rgba(0,0,0,.1));
 				}
 
 				// 2nd level <li>
-				& > li {
+				> li {
 
 					&.menu-item-has-children {
 						position: relative;
 					}
 
 					// 2nd level <a>
-					& > a {
+					> a {
 						display: block;
 					}
 
@@ -393,12 +421,13 @@
 
 					// 3rd level <ul class="sub-menu"> [open]
 					&:hover > .sub-menu,
-					& > .sub-menu[aria-hidden="false"] {
+					> .sub-menu[aria-hidden="false"] {
 						animation: child-submenu-in .25s ease-in-out;
 						opacity: 1;
 						display: block;
 						left: var(--width-menu-dropdown);
 						top: 0;
+
 						&.is-out-of-bounds {
 							left: calc(-1 * var(--width-menu-dropdown));
 							right: 0;
@@ -406,7 +435,7 @@
 					}
 
 					// 3rd level <ul class="sub-menu"> [closed]
-					& > ul {
+					> ul {
 						width: var(--width-menu-dropdown);
 						display: none;
 						background: var(--color-white);
@@ -429,19 +458,23 @@
 }
 
 @keyframes mobile-submenu-in {
+
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}
 }
 
 @keyframes main-submenu-in {
+
 	from {
 		opacity: 0;
 		transform: translateY(-.25rem);
 	}
+
 	to {
 		opacity: 1;
 		transform: translateY(0);
@@ -449,9 +482,11 @@
 }
 
 @keyframes child-submenu-in {
+
 	from {
 		opacity: 0;
 	}
+
 	to {
 		opacity: 1;
 	}

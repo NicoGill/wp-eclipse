@@ -5,7 +5,9 @@
 @use '@scss/abstracts/index' as *;
 
 .site-footer {
+
 	&__inner {
+
 		@include wrap;
 	}
 }

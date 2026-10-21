@@ -89,7 +89,7 @@
 		*/
 
 :where( svg:not( [fill] ) ) {
-	fill: currentColor; // eslint-disable-line value-keyword-case
+	fill: currentcolor; // eslint-disable-line value-keyword-case
 }
 
 /* Forms
@@ -100,7 +100,7 @@
 		*/
 
 :where( button, [type='button' i], [type='reset' i], [type='submit' i] ) {
-	appearance: button;
+	appearance: auto;
 }
 
 /**
@@ -157,7 +157,7 @@
 		*/
 
 ::-webkit-file-upload-button {
-	appearance: button; /* 1 */
+	appearance: auto; /* 1 */
 	// stylelint-disable-next-line
 	font: inherit; /* 2 */
 }
@@ -200,11 +200,12 @@
 }
 
 :where( [aria-hidden='false' i][hidden]:not( :focus ) ) {
-	clip: rect( 0, 0, 0, 0 );
+	clip-path: inset( 50% );
 	position: absolute;
 }
 
 @media ( prefers-reduced-motion: reduce ) {
+
 	*,
 	::before,
 	::after {

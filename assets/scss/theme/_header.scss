@@ -8,6 +8,7 @@
 	padding-top: var(--wp--style--root--padding-left);
 
 	&__inner {
+
 		@include wrap;
 		display: flex;
 		align-items: center;

@@ -5,12 +5,13 @@
 @use '@scss/abstracts/index' as *;
 
 .wrapper {
+
 	@include wrap;
 }
 
 .icon {
 	display: inline-block;
-	fill: currentColor;
+	fill: currentcolor;
 	height: 1.5rem;
 	vertical-align: middle;
 	width: 1.5rem;

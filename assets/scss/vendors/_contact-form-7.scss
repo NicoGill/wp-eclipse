@@ -5,14 +5,18 @@
 @use '@scss/abstracts/index' as *;
 
 .wpcf7 {
+
 	form.contact-form {
+
 		&.invalid,
 		&.unaccepted,
 		&.payment-required {
+
 			.wpcf7-response-output {
 				background-color: var( --color-warning );
 			}
 		}
+
 		.wpcf7-response-output {
 			background-color: var( --color-success );
 			border: 0;
