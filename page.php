@@ -21,7 +21,6 @@ get_header();
 
 	<main id="primary" class="site-main" role="main">
 		<div class="wrapper">
-			<?php echo get_svg( [ 'icon' => 'chevron-down' ] ); ?>
 			<?php
 			while ( have_posts() ) :
 				the_post();

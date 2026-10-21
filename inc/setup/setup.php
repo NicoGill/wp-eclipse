@@ -20,9 +20,6 @@ function setup() {
 	/**
 	 * Make theme available for translation.
 	 * Translations can be filed in the /languages/ directory.
-	 * If you're building a theme based on wd_s, refer to the
-	 * README.md file in this theme to find and replace all
-	 * references of wd_s
 	 */
 	load_theme_textdomain( 'wp-eclipse', get_template_directory() . '/build/languages' );
 
@@ -53,8 +50,7 @@ function setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	// TODO:
-	// add_image_size( 'hero', 1920, 1080, false );
+	// Register custom image sizes here with add_image_size().
 
 	// Register navigation menus.
 	register_nav_menus(
@@ -77,9 +73,6 @@ function setup() {
 			'caption',
 		)
 	);
-
-	// Add theme support for selective refresh for widgets.
-	remove_theme_support( 'customize-selective-refresh-widgets' );
 
 	// Block editor support in a classic theme.
 	add_theme_support( 'align-wide' );

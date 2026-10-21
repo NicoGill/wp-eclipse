@@ -11,8 +11,8 @@ namespace NicoGill\wp_eclipse;
 
 <button class="menu-toggle js-menu-toggle">
 	<span class="menu-toggle__icon">
-		<?php echo get_svg( [ 'icon' => 'menu' ] ); ?>
-		<?php echo get_svg( [ 'icon' => 'close' ] ); ?>
+		<?php echo get_svg( [ 'icon' => 'menu' ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in get_svg(). ?>
+		<?php echo get_svg( [ 'icon' => 'close' ] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Escaped in get_svg(). ?>
 	</span>
 
 	<span class="menu-toggle__label-open">

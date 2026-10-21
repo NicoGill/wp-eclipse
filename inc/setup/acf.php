@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Setup Advanced Custom Fields Pro.
  *
@@ -11,43 +10,17 @@ namespace NicoGill\wp_eclipse;
 /**
  * Hide the ACF admin menu item in production.
  */
-if ( wp_get_environment_type() === 'production' ) {
+if ( 'production' === wp_get_environment_type() ) {
 	add_filter( 'acf/settings/show_admin', '__return_false' );
 }
 
 /**
- * When including the PRO plugin, hide the ACF Updates menu.
+ * Hide the ACF Updates menu.
  */
 add_filter( 'acf/settings/show_updates', '__return_false', 100 );
 
 /**
- * Add a custom path for saving ACF JSON files.
- */
-function acf_json_save_point() {
-	return get_stylesheet_directory() . '/acf-json';
-}
-add_filter( 'acf/settings/save_json', __NAMESPACE__ . '\acf_json_save_point' );
-
-/**
- * Add a custom path to look for JSON files.
- *
- * @param array $paths
- *
- * @return array
- */
-function acf_json_load_point( $paths ) {
-	// Remove the original path (optional).
-	unset( $paths[0] );
-
-	// Append the new path and return it.
-	$paths[] = get_stylesheet_directory() . '/acf-json';
-
-	return $paths;
-}
-add_filter( 'acf/settings/load_json', __NAMESPACE__ . '\acf_json_load_point' );
-
-/**
- * Disable the custom post type and taxonomies feature.
+ * Disable the custom post type and taxonomies UI.
  */
 add_filter( 'acf/settings/enable_post_types', '__return_false' );
 
@@ -57,21 +30,42 @@ add_filter( 'acf/settings/enable_post_types', '__return_false' );
 add_filter( 'acf/settings/enable_options_pages_ui', '__return_false' );
 
 /**
- * Add options pages.
+ * Save ACF JSON files in the theme.
+ *
+ * @return string Path.
  */
-if ( function_exists( 'acf_add_options_page' ) ) {
-
-	function add_options_pages() {
-		acf_add_options_page(
-			array(
-				'page_title' => __( 'Paramètres du thème', 'wp-eclipse' ),
-				'menu_title' => __( 'Paramètres', 'wp-eclipse' ),
-				'menu_slug'  => 'theme-settings',
-				'capability' => 'edit_posts',
-				'redirect'   => false,
-			)
-		);
-	}
-
-	add_action( 'acf/init', __NAMESPACE__ . '\add_options_pages' );
+function acf_json_save_point() {
+	return get_stylesheet_directory() . '/acf-json';
 }
+add_filter( 'acf/settings/save_json', __NAMESPACE__ . '\acf_json_save_point' );
+
+/**
+ * Load ACF JSON files from the theme only.
+ *
+ * @param array $paths Load paths.
+ *
+ * @return array Load paths.
+ */
+function acf_json_load_point( $paths ) {
+	unset( $paths[0] );
+	$paths[] = get_stylesheet_directory() . '/acf-json';
+
+	return $paths;
+}
+add_filter( 'acf/settings/load_json', __NAMESPACE__ . '\acf_json_load_point' );
+
+/**
+ * Add the theme settings options page.
+ */
+function add_options_pages() {
+	acf_add_options_page(
+		array(
+			'page_title' => __( 'Paramètres du thème', 'wp-eclipse' ),
+			'menu_title' => __( 'Paramètres', 'wp-eclipse' ),
+			'menu_slug'  => 'theme-settings',
+			'capability' => 'edit_posts',
+			'redirect'   => false,
+		)
+	);
+}
+add_action( 'acf/init', __NAMESPACE__ . '\add_options_pages' );

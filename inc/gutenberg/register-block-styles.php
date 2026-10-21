@@ -35,4 +35,4 @@ function register_block_styles() {
 		}
 	}
 }
-add_filter( 'init', __NAMESPACE__ . '\register_block_styles', 10, 1 );
+add_action( 'init', __NAMESPACE__ . '\register_block_styles' );

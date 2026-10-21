@@ -27,8 +27,6 @@ add_filter( 'tiny_mce_before_init', __NAMESPACE__ . '\show_second_editor_row' );
  */
 function tinymce2_custom_buttons( $buttons ) {
 	array_unshift( $buttons, 'styleselect' );
-	// add custom HTML elements to the style dropdown.
-	array_push( $buttons, 'spacer_select', 'button_select' );
 
 	return $buttons;
 }

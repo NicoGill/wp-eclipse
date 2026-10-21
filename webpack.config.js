@@ -47,7 +47,6 @@ const moveRtlCssAssetsPlugin = {
 const entries = {
 	main: path.resolve(__dirname, 'assets/js/main.js'),
 	theme: path.resolve(__dirname, 'assets/scss/main.scss'),
-	tinymce: path.resolve(__dirname, 'assets/scss/editor-classic.scss'),
 };
 
 globSync('blocks/*/index.js', { cwd: __dirname }).forEach((file) => {

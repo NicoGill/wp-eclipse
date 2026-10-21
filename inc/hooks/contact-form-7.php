@@ -8,21 +8,28 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * Disable wpautop in Contact Form 7
+ * Disable wpautop in Contact Form 7.
  */
 add_filter( 'wpcf7_autop_or_not', '__return_false' );
 
 /**
- * Remove loading of contact form 7 scripts and styles.
+ * Do not load Contact Form 7 assets everywhere.
  */
 add_filter( 'wpcf7_load_js', '__return_false' );
 add_filter( 'wpcf7_load_css', '__return_false' );
 
 /**
- * Remove Contact form 7 styles and scripts
+ * Load Contact Form 7 assets only where a form is in the content.
+ * Use the `wp_eclipse_load_cf7_assets` filter for forms placed elsewhere (ACF fields, templates).
  */
 function conditional_load_cf7_assets() {
-	if ( ! is_page_template( 'page-templates/contact.php' ) ) {
+	$post     = get_post();
+	$has_form = is_singular() && $post && (
+		has_shortcode( $post->post_content, 'contact-form-7' )
+		|| has_block( 'contact-form-7/contact-form-selector', $post )
+	);
+
+	if ( ! apply_filters( 'wp_eclipse_load_cf7_assets', $has_form ) ) {
 		return;
 	}
 

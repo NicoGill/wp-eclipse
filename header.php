@@ -34,20 +34,16 @@ defined( 'ABSPATH' ) || exit;
 		<header id="masthead" class="site-header">
 			<div class="site-header__inner">
 
-				<?php
-				$custom_logo_id = get_theme_mod( 'custom_logo' );
-
-				if ( $custom_logo_id ) :
-					?>
+				<?php if ( has_custom_logo() ) : ?>
 					<div class="site-header__branding">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="site-header__logo" aria-label="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-							<?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
+							<?php echo wp_get_attachment_image( get_theme_mod( 'custom_logo' ), 'full' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Core markup. ?>
 						</a>
 					</div>
 				<?php endif; ?>
 
 				<?php if ( has_nav_menu( 'primary' ) ) : ?>
-					<nav class="js-navigation primary-navigation site-header__main desktop-menu" data-navigation-type="desktop" aria-label="Menu principal">
+					<nav class="js-navigation primary-navigation site-header__main desktop-menu" data-navigation-type="desktop" aria-label="<?php esc_attr_e( 'Menu principal', 'wp-eclipse' ); ?>">
 						<?php
 						wp_nav_menu(
 							array(

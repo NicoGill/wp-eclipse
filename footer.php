@@ -14,15 +14,7 @@ defined( 'ABSPATH' ) || exit;
 ?>
 			<footer id="colophon" class="site-footer">
 				<div class="site-footer__inner">
-					<?php
-					echo wp_kses_post(
-						sprintf(
-							'<p>%s %s</p>',
-							esc_html( date( 'Y' ) ),
-							esc_html( get_bloginfo( 'name' ) )
-						)
-					);
-					?>
+					<p><?php echo esc_html( wp_date( 'Y' ) . ' ' . get_bloginfo( 'name' ) ); ?></p>
 				</div>
 			</footer>
 
@@ -33,7 +25,7 @@ defined( 'ABSPATH' ) || exit;
 
 					<div class="mobile-menu__nav__inner">
 						<?php if ( has_nav_menu( 'primary' ) ) : ?>
-							<nav class="js-navigation primary-navigation" data-navigation-type="mobile" aria-label="Menu principal">
+							<nav class="js-navigation primary-navigation" data-navigation-type="mobile" aria-label="<?php esc_attr_e( 'Menu principal', 'wp-eclipse' ); ?>">
 								<?php
 								wp_nav_menu(
 									array(

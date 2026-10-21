@@ -12,8 +12,7 @@ namespace NicoGill\wp_eclipse;
  *
  * @return array The modified list of blocks allowed in the editor, excluding blacklisted blocks.
  */
-function unregister_custom_blocks(): array
-{
+function unregister_custom_blocks(): array {
 	$blocks = array_keys( \WP_Block_Type_Registry::get_instance()->get_all_registered() );
 
 	$blacklist = [

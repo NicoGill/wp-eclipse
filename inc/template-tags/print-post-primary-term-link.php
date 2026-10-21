@@ -12,7 +12,7 @@ namespace NicoGill\wp_eclipse;
  * Print the first category associated with a post.
  *
  * @param int    $post_id The ID of the post.
- * @param string $taxonomy
+ * @param string $taxonomy Taxonomy slug.
  */
 function print_post_primary_term_link( int $post_id = 0, string $taxonomy = 'category' ): void {
 	if ( ! $post_id ) {

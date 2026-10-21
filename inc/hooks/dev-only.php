@@ -1,6 +1,6 @@
 <?php
 /**
- * Scripts, hooks and filters only for development environment.
+ * Hooks only for the local environment (WP_ENVIRONMENT_TYPE = local).
  *
  * @package wp_eclipse
  */
@@ -8,36 +8,21 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * Custom PHP mailer (Mailpit) in local environment
+ * Route mails to Mailpit in local environment.
  *
- * @param $phpmailer
+ * @param \PHPMailer\PHPMailer\PHPMailer $phpmailer The PHPMailer instance.
  *
  * @return void
  */
 function phpmailer_init_dev( $phpmailer ) {
-
 	if ( 'local' !== wp_get_environment_type() ) {
 		return;
 	}
 
+	// phpcs:disable WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase -- PHPMailer API.
 	$phpmailer->isSMTP();
-	$phpmailer->Host = 'mailpit'; // phpcs :ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-	$phpmailer->Port = 1025; // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+	$phpmailer->Host = 'mailpit';
+	$phpmailer->Port = 1025;
+	// phpcs:enable
 }
 add_action( 'phpmailer_init', __NAMESPACE__ . '\phpmailer_init_dev' );
-
-/**
- * Proper ob_end_flush() for all levels
- *
- * This replaces the WordPress `wp_ob_end_flush_all()` function
- * with a replacement that doesn't cause PHP notices.
- *
- * @source : https://www.kevinleary.net/blog/wordpress-ob_end_flush-error-fix/
- */
-remove_action( 'shutdown', 'wp_ob_end_flush_all', 1 );
-add_action(
-	'shutdown',
-	function () {
-		while ( @ob_end_flush() ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
-	}
-);

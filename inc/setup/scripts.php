@@ -8,9 +8,7 @@
 namespace NicoGill\wp_eclipse;
 
 /**
- * Enqueue scripts and styles.
- *
- * @author WebDevStudios
+ * Enqueue theme styles and deferred script, versioned by the build.
  */
 function scripts() {
 	$asset_file_path = get_template_directory() . '/build/js/main.asset.php';
@@ -18,40 +16,19 @@ function scripts() {
 	if ( is_readable( $asset_file_path ) ) {
 		$asset_file = include $asset_file_path;
 	} else {
-		$theme         = wp_get_theme( get_template() );
-		$theme_version = $theme->get( 'Version' );
-
 		$asset_file = array(
-			'version'      => $theme_version,
-			'dependencies' => array( 'wp-polyfill' ),
+			'version'      => wp_get_theme( get_template() )->get( 'Version' ),
+			'dependencies' => array(),
 		);
 	}
 
-	// Register styles & scripts.
 	wp_enqueue_style( 'wp-eclipse-styles', get_stylesheet_directory_uri() . '/build/css/theme.css', array(), $asset_file['version'] );
-	wp_enqueue_script( 'wp-eclipse-scripts', get_stylesheet_directory_uri() . '/build/js/main.js', $asset_file['dependencies'], $asset_file['version'], true );
+	wp_enqueue_script(
+		'wp-eclipse-scripts',
+		get_stylesheet_directory_uri() . '/build/js/main.js',
+		$asset_file['dependencies'],
+		$asset_file['version'],
+		array( 'strategy' => 'defer' )
+	);
 }
 add_action( 'wp_enqueue_scripts', __NAMESPACE__ . '\scripts' );
-
-/**
- * Enqueue custom styles for the TinyMCE editor (classic)
- */
-function editor_styles() {
-	add_editor_style( 'build/css/tinymce.css' );
-}
-add_action( 'admin_init', __NAMESPACE__ . '\editor_styles' );
-
-/**
- * Add defer attribute to theme scripts.
- *
- * @param string $tag    The script tag.
- * @param string $handle The script handle.
- * @return string Modified script tag.
- */
-function defer_theme_scripts( $tag, $handle ) {
-	if ( 'wp-eclipse-scripts' === $handle ) {
-		return str_replace( ' src', ' defer src', $tag );
-	}
-	return $tag;
-}
-add_filter( 'script_loader_tag', __NAMESPACE__ . '\defer_theme_scripts', 10, 2 );
