@@ -33,6 +33,7 @@
 	<exclude-pattern>*.min.js</exclude-pattern>
 	<exclude-pattern>*.min.css</exclude-pattern>
 	<exclude-pattern>*/acf-json/*</exclude-pattern>
+	<exclude-pattern>*/bin/*</exclude-pattern>
 
 	<!-- PHP Compatibility: WordPress Core currently supports PHP 8.2+. -->
 	<config name="testVersion" value="8.2-8.3"/>

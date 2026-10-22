@@ -36,6 +36,7 @@
 		"format": "phpcbf --report=summary,source",
 		"lint": "phpcs --report=code",
 		"report": "phpcs  --report=full,source",
-		"pot": "wp i18n make-pot . languages/wp-eclipse.pot --exclude=node_modules,vendor,build"
+		"pot": "wp i18n make-pot . languages/wp-eclipse.pot --exclude=node_modules,vendor,build",
+		"zip": "php bin/package.php"
 	}
 }

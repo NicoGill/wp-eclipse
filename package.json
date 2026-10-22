@@ -1,21 +1,28 @@
 {
 	"name": "wp-eclipse",
-	"homepage": "https://github.com/NicoGill/wp-eclipse",
+	"version": "1.2.2",
+	"description": "WordPress development starter hybrid theme by (and mostly for) Nicolas Gillium.",
+	"author": "NicoGill",
+	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"wordpress",
 		"theme",
 		"gutenberg"
 	],
-	"license": "GPL-2.0-or-later",
-	"version": "1.2.2",
-	"description": "WordPress development starter hybrid theme by (and mostly for) Nicolas Gillium.",
-	"author": "NicoGill",
+	"homepage": "https://github.com/NicoGill/wp-eclipse",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/NicoGill/wp-eclipse.git"
 	},
 	"bugs": "https://github.com/NicoGill/wp-eclipse/issues",
 	"private": true,
+	"engines": {
+		"node": ">=22.13.0",
+		"npm": ">=8.19.2"
+	},
+	"dependencies": {
+		"a11y-dialog": "^8.1.5"
+	},
 	"devDependencies": {
 		"@wordpress/create-block": "^5.0.0",
 		"@wordpress/prettier-config": "^5.0.0",
@@ -45,14 +52,10 @@
 		"lint:php": "composer run lint",
 		"lint:php:fix": "composer run format",
 		"lint:md:docs": "wp-scripts lint-md-docs",
-		"lint:pkg-json": "wp-scripts lint-pkg-json"
-	},
-	"dependencies": {
-		"a11y-dialog": "^8.1.5"
-	},
-	"engines": {
-		"node": ">=22.13.0",
-		"npm": ">=8.19.2"
+		"lint:pkg-json": "wp-scripts lint-pkg-json",
+		"preversion": "npm run lint",
+		"version": "node bin/version.js && git add style.css CHANGELOG.md",
+		"package": "wp-scripts build && composer run zip"
 	},
 	"overrides": {
 		"postcss-selector-parser": "^7.1.7",

@@ -1,0 +1,31 @@
+# Left out of the release archive (npm run package, bin/package.php).
+# Kept: build/, assets/fonts/, acf-json/, languages/, patterns/, templates, theme.json, screenshot.png.
+/.git
+/.github
+/node_modules
+/vendor
+/dist
+/.npm-cache
+/assets/images
+/assets/js
+/assets/scss
+/bin
+/blocks
+/inc/block-template
+/.distignore
+/.editorconfig
+/.gitattributes
+/.gitignore
+/.npmrc
+/.nvmrc
+/.stylelintignore
+/.stylelintrc.json
+/CHANGELOG.md
+/composer.json
+/composer.lock
+/eslint.config.js
+/package.json
+/package-lock.json
+/phpcs.xml.dist
+/README.md
+/webpack.config.js

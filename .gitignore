@@ -24,3 +24,6 @@ vendor/
 
 # theme
 build/
+
+# release archives
+dist/
