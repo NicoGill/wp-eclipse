@@ -1,5 +1,5 @@
 # Left out of the release archive (npm run package, bin/package.php).
-# Kept: build/, assets/fonts/, acf-json/, languages/, patterns/, templates, theme.json, screenshot.png.
+# Kept: build/, assets/fonts/, acf-json/, languages/, patterns/, templates, theme.json, screenshot.jpg.
 /.git
 /.github
 /node_modules
